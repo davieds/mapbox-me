@@ -12,6 +12,9 @@
 #import "RMMapBoxSource.h"
 #import "RMUserTrackingBarButtonItem.h"
 
+#define kNormalSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
+#define kRetinaSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
+
 @interface MBMViewController ()
 
 @property (nonatomic, strong) IBOutlet RMMapView *mapView;
@@ -36,9 +39,8 @@
     
     self.navigationItem.rightBarButtonItem.tintColor = self.navigationController.navigationBar.tintColor;
     
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:[NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/mapbox.mapbox-streets.json"]];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaSourceURL : kNormalSourceURL)];
     self.mapView.decelerationMode = RMMapDecelerationFast;
-    self.mapView.adjustTilesForRetinaDisplay = YES;    
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
