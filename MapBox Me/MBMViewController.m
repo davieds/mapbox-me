@@ -35,16 +35,23 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
     
-    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    CGRect mapRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height);
     
-    self.navigationItem.rightBarButtonItem.tintColor = self.navigationController.navigationBar.tintColor;
+    RMMapBoxSource *tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaSourceURL : kNormalSourceURL)];
     
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaSourceURL : kNormalSourceURL)];
+    self.mapView = [[RMMapView alloc] initWithFrame:mapRect andTilesource:tileSource];
+    
     self.mapView.decelerationMode = RMMapDecelerationFast;
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
     self.mapView.backgroundColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:0.5];
+    
+    [self.view addSubview:self.mapView];
+    
+    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+    
+    self.navigationItem.rightBarButtonItem.tintColor = self.navigationController.navigationBar.tintColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated

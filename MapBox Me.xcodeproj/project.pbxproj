@@ -30,7 +30,6 @@
 		DDD0B7B21524D4E400EBC267 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B11524D4E400EBC267 /* main.m */; };
 		DDD0B7B61524D4E400EBC267 /* MBMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */; };
 		DDD0B7B91524D4E400EBC267 /* MBMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B81524D4E400EBC267 /* MBMViewController.m */; };
-		DDD0B7BC1524D4E400EBC267 /* MBMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDD0B7BA1524D4E400EBC267 /* MBMViewController.xib */; };
 		DDD0B7C31524D52B00EBC267 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7C21524D52B00EBC267 /* CoreLocation.framework */; };
 		DDD0B7DD1524D6EA00EBC267 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7DC1524D6EA00EBC267 /* libsqlite3.dylib */; };
 		DDD0B7DF1524D6FB00EBC267 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7DE1524D6FB00EBC267 /* QuartzCore.framework */; };
@@ -88,7 +87,6 @@
 		DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBMAppDelegate.m; sourceTree = "<group>"; };
 		DDD0B7B71524D4E400EBC267 /* MBMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBMViewController.h; sourceTree = "<group>"; };
 		DDD0B7B81524D4E400EBC267 /* MBMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBMViewController.m; sourceTree = "<group>"; };
-		DDD0B7BB1524D4E400EBC267 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MBMViewController.xib; sourceTree = "<group>"; };
 		DDD0B7C21524D52B00EBC267 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		DDD0B7C51524D62400EBC267 /* MapView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = MapView.xcodeproj; path = "MapBox-iOS-SDK/MapView/MapView.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		DDD0B7DC1524D6EA00EBC267 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -162,7 +160,6 @@
 				DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */,
 				DDD0B7B71524D4E400EBC267 /* MBMViewController.h */,
 				DDD0B7B81524D4E400EBC267 /* MBMViewController.m */,
-				DDD0B7BA1524D4E400EBC267 /* MBMViewController.xib */,
 				DDD0B7AC1524D4E400EBC267 /* Supporting Files */,
 			);
 			path = "MapBox Me";
@@ -279,7 +276,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDD0B7B01524D4E400EBC267 /* InfoPlist.strings in Resources */,
-				DDD0B7BC1524D4E400EBC267 /* MBMViewController.xib in Resources */,
 				DD005CDE1524EDB1006B9481 /* icon@2x.png in Resources */,
 				DD005CDF1524EDB1006B9481 /* icon.png in Resources */,
 				DD005CF51524F065006B9481 /* TrackingDot@2x.png in Resources */,
@@ -327,14 +323,6 @@
 				DDD0B7AF1524D4E400EBC267 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DDD0B7BA1524D4E400EBC267 /* MBMViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDD0B7BB1524D4E400EBC267 /* en */,
-			);
-			name = MBMViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
