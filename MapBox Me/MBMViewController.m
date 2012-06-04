@@ -35,7 +35,7 @@
     
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
     
-    CGRect mapRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - self.navigationController.navigationBar.bounds.size.height);
+    CGRect mapRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     
     RMMapBoxSource *tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaSourceURL : kNormalSourceURL)];
     
@@ -46,6 +46,8 @@
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
     self.mapView.backgroundColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:0.5];
+    
+    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     [self.view addSubview:self.mapView];
     
@@ -59,6 +61,11 @@
     [super viewDidAppear:animated];
 
     self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad;
 }
 
 @end
