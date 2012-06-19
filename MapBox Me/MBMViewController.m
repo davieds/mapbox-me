@@ -46,6 +46,7 @@
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
     self.mapView.backgroundColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:0.5];
+    self.mapView.viewControllerPresentingAttribution = self;
     
     self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
