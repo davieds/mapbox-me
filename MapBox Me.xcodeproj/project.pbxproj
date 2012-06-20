@@ -9,22 +9,22 @@
 /* Begin PBXBuildFile section */
 		DD005CDE1524EDB1006B9481 /* icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CDC1524EDB1006B9481 /* icon@2x.png */; };
 		DD005CDF1524EDB1006B9481 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CDD1524EDB1006B9481 /* icon.png */; };
-		DD005CF51524F065006B9481 /* TrackingDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CF31524F065006B9481 /* TrackingDot@2x.png */; };
-		DD005CF61524F065006B9481 /* TrackingDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CF41524F065006B9481 /* TrackingDot.png */; };
 		DD005D1B1524F0F2006B9481 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D1A1524F0F2006B9481 /* routeme.plist */; };
 		DD005D211524F386006B9481 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D201524F386006B9481 /* Entitlements.plist */; };
 		DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD57D03C152FA94500584A7C /* libz.dylib */; };
-		DD5960A1152676BE0086568C /* TrackingDotHalo.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A0152676BE0086568C /* TrackingDotHalo.png */; };
-		DD5960A715268D6A0086568C /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A215268D6A0086568C /* TrackingLocation@2x.png */; };
-		DD5960A815268D6A0086568C /* TrackingHeading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A315268D6A0086568C /* TrackingHeading@2x.png */; };
-		DD5960A915268D6A0086568C /* TrackingDotHalo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A415268D6A0086568C /* TrackingDotHalo@2x.png */; };
-		DD5960AA15268D6A0086568C /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A515268D6A0086568C /* TrackingLocation.png */; };
-		DD5960AB15268D6A0086568C /* TrackingHeading.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960A615268D6A0086568C /* TrackingHeading.png */; };
-		DD5960AE152A77B50086568C /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960AC152A77B50086568C /* HeadingAngleSmall.png */; };
-		DD5960AF152A77B50086568C /* HeadingAngleSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD5960AD152A77B50086568C /* HeadingAngleSmall@2x.png */; };
 		DD596135152BB0210086568C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD596130152BB0120086568C /* libMapView.a */; };
 		DDB42C8F159277480046ED41 /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8D159277480046ED41 /* icon_ipad.png */; };
 		DDB42C90159277480046ED41 /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8E159277480046ED41 /* icon_ipad@2x.png */; };
+		DDB42CAC1592787C0046ED41 /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */; };
+		DDB42CAD1592787C0046ED41 /* HeadingAngleSmall@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */; };
+		DDB42CAE1592787C0046ED41 /* TrackingDot.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA41592787C0046ED41 /* TrackingDot.png */; };
+		DDB42CAF1592787C0046ED41 /* TrackingDot@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */; };
+		DDB42CB01592787C0046ED41 /* TrackingDotHalo.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */; };
+		DDB42CB11592787C0046ED41 /* TrackingDotHalo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA71592787C0046ED41 /* TrackingDotHalo@2x.png */; };
+		DDB42CB21592787C0046ED41 /* TrackingHeading.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA81592787C0046ED41 /* TrackingHeading.png */; };
+		DDB42CB31592787C0046ED41 /* TrackingHeading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */; };
+		DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAA1592787C0046ED41 /* TrackingLocation.png */; };
+		DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */; };
 		DDD0B7A61524D4E400EBC267 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A51524D4E400EBC267 /* UIKit.framework */; };
 		DDD0B7A81524D4E400EBC267 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A71524D4E400EBC267 /* Foundation.framework */; };
 		DDD0B7AA1524D4E400EBC267 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A91524D4E400EBC267 /* CoreGraphics.framework */; };
@@ -64,21 +64,21 @@
 /* Begin PBXFileReference section */
 		DD005CDC1524EDB1006B9481 /* icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon@2x.png"; sourceTree = "<group>"; };
 		DD005CDD1524EDB1006B9481 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		DD005CF31524F065006B9481 /* TrackingDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingDot@2x.png"; sourceTree = "<group>"; };
-		DD005CF41524F065006B9481 /* TrackingDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingDot.png; sourceTree = "<group>"; };
 		DD005D1A1524F0F2006B9481 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		DD005D201524F386006B9481 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
 		DD57D03C152FA94500584A7C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		DD5960A0152676BE0086568C /* TrackingDotHalo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingDotHalo.png; sourceTree = "<group>"; };
-		DD5960A215268D6A0086568C /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingLocation@2x.png"; sourceTree = "<group>"; };
-		DD5960A315268D6A0086568C /* TrackingHeading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingHeading@2x.png"; sourceTree = "<group>"; };
-		DD5960A415268D6A0086568C /* TrackingDotHalo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "TrackingDotHalo@2x.png"; sourceTree = "<group>"; };
-		DD5960A515268D6A0086568C /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingLocation.png; sourceTree = "<group>"; };
-		DD5960A615268D6A0086568C /* TrackingHeading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TrackingHeading.png; sourceTree = "<group>"; };
-		DD5960AC152A77B50086568C /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeadingAngleSmall.png; sourceTree = "<group>"; };
-		DD5960AD152A77B50086568C /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeadingAngleSmall@2x.png"; sourceTree = "<group>"; };
 		DDB42C8D159277480046ED41 /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
 		DDB42C8E159277480046ED41 /* icon_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_ipad@2x.png"; sourceTree = "<group>"; };
+		DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HeadingAngleSmall.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/HeadingAngleSmall.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "HeadingAngleSmall@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/HeadingAngleSmall@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA41592787C0046ED41 /* TrackingDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingDot.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingDot.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingDot@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingDot@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingDotHalo.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingDotHalo.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA71592787C0046ED41 /* TrackingDotHalo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingDotHalo@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingDotHalo@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA81592787C0046ED41 /* TrackingHeading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingHeading.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingHeading.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingHeading@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingHeading@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CAA1592787C0046ED41 /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingLocation.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation.png"; sourceTree = SOURCE_ROOT; };
+		DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingLocation@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation@2x.png"; sourceTree = SOURCE_ROOT; };
 		DDD0B7A11524D4E400EBC267 /* MapBox Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MapBox Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD0B7A51524D4E400EBC267 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DDD0B7A71524D4E400EBC267 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -182,16 +182,16 @@
 				DDB42C8E159277480046ED41 /* icon_ipad@2x.png */,
 				DD005D1A1524F0F2006B9481 /* routeme.plist */,
 				DD005D201524F386006B9481 /* Entitlements.plist */,
-				DD5960AC152A77B50086568C /* HeadingAngleSmall.png */,
-				DD5960AD152A77B50086568C /* HeadingAngleSmall@2x.png */,
-				DD005CF41524F065006B9481 /* TrackingDot.png */,
-				DD005CF31524F065006B9481 /* TrackingDot@2x.png */,
-				DD5960A0152676BE0086568C /* TrackingDotHalo.png */,
-				DD5960A415268D6A0086568C /* TrackingDotHalo@2x.png */,
-				DD5960A615268D6A0086568C /* TrackingHeading.png */,
-				DD5960A315268D6A0086568C /* TrackingHeading@2x.png */,
-				DD5960A515268D6A0086568C /* TrackingLocation.png */,
-				DD5960A215268D6A0086568C /* TrackingLocation@2x.png */,
+				DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */,
+				DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */,
+				DDB42CA41592787C0046ED41 /* TrackingDot.png */,
+				DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */,
+				DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */,
+				DDB42CA71592787C0046ED41 /* TrackingDotHalo@2x.png */,
+				DDB42CA81592787C0046ED41 /* TrackingHeading.png */,
+				DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */,
+				DDB42CAA1592787C0046ED41 /* TrackingLocation.png */,
+				DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -284,20 +284,20 @@
 				DDD0B7B01524D4E400EBC267 /* InfoPlist.strings in Resources */,
 				DD005CDE1524EDB1006B9481 /* icon@2x.png in Resources */,
 				DD005CDF1524EDB1006B9481 /* icon.png in Resources */,
-				DD005CF51524F065006B9481 /* TrackingDot@2x.png in Resources */,
-				DD005CF61524F065006B9481 /* TrackingDot.png in Resources */,
 				DD005D1B1524F0F2006B9481 /* routeme.plist in Resources */,
 				DD005D211524F386006B9481 /* Entitlements.plist in Resources */,
-				DD5960A1152676BE0086568C /* TrackingDotHalo.png in Resources */,
-				DD5960A715268D6A0086568C /* TrackingLocation@2x.png in Resources */,
-				DD5960A815268D6A0086568C /* TrackingHeading@2x.png in Resources */,
-				DD5960A915268D6A0086568C /* TrackingDotHalo@2x.png in Resources */,
-				DD5960AA15268D6A0086568C /* TrackingLocation.png in Resources */,
-				DD5960AB15268D6A0086568C /* TrackingHeading.png in Resources */,
-				DD5960AE152A77B50086568C /* HeadingAngleSmall.png in Resources */,
-				DD5960AF152A77B50086568C /* HeadingAngleSmall@2x.png in Resources */,
 				DDB42C8F159277480046ED41 /* icon_ipad.png in Resources */,
 				DDB42C90159277480046ED41 /* icon_ipad@2x.png in Resources */,
+				DDB42CAC1592787C0046ED41 /* HeadingAngleSmall.png in Resources */,
+				DDB42CAD1592787C0046ED41 /* HeadingAngleSmall@2x.png in Resources */,
+				DDB42CAE1592787C0046ED41 /* TrackingDot.png in Resources */,
+				DDB42CAF1592787C0046ED41 /* TrackingDot@2x.png in Resources */,
+				DDB42CB01592787C0046ED41 /* TrackingDotHalo.png in Resources */,
+				DDB42CB11592787C0046ED41 /* TrackingDotHalo@2x.png in Resources */,
+				DDB42CB21592787C0046ED41 /* TrackingHeading.png in Resources */,
+				DDB42CB31592787C0046ED41 /* TrackingHeading@2x.png in Resources */,
+				DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */,
+				DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
