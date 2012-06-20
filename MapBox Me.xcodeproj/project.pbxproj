@@ -125,10 +125,34 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DDB42CD8159279AA0046ED41 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DD005CDD1524EDB1006B9481 /* icon.png */,
+				DD005CDC1524EDB1006B9481 /* icon@2x.png */,
+				DDB42C8D159277480046ED41 /* icon_ipad.png */,
+				DDB42C8E159277480046ED41 /* icon_ipad@2x.png */,
+				DD005D1A1524F0F2006B9481 /* routeme.plist */,
+				DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */,
+				DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */,
+				DDB42CA41592787C0046ED41 /* TrackingDot.png */,
+				DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */,
+				DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */,
+				DDB42CA71592787C0046ED41 /* TrackingDotHalo@2x.png */,
+				DDB42CA81592787C0046ED41 /* TrackingHeading.png */,
+				DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */,
+				DDB42CAA1592787C0046ED41 /* TrackingLocation.png */,
+				DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */,
+			);
+			name = Resources;
+			path = "MapBox Me";
+			sourceTree = "<group>";
+		};
 		DDD0B7961524D4E400EBC267 = {
 			isa = PBXGroup;
 			children = (
 				DDD0B7AB1524D4E400EBC267 /* MapBox Me */,
+				DDB42CD8159279AA0046ED41 /* Resources */,
 				DDD0B7C41524D61000EBC267 /* MapBox SDK */,
 				DDD0B7A41524D4E400EBC267 /* Frameworks */,
 				DDD0B7A21524D4E400EBC267 /* Products */,
@@ -176,22 +200,7 @@
 				DDD0B7AE1524D4E400EBC267 /* InfoPlist.strings */,
 				DDD0B7B11524D4E400EBC267 /* main.m */,
 				DDD0B7B31524D4E400EBC267 /* MapBox Me-Prefix.pch */,
-				DD005CDD1524EDB1006B9481 /* icon.png */,
-				DD005CDC1524EDB1006B9481 /* icon@2x.png */,
-				DDB42C8D159277480046ED41 /* icon_ipad.png */,
-				DDB42C8E159277480046ED41 /* icon_ipad@2x.png */,
-				DD005D1A1524F0F2006B9481 /* routeme.plist */,
 				DD005D201524F386006B9481 /* Entitlements.plist */,
-				DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */,
-				DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */,
-				DDB42CA41592787C0046ED41 /* TrackingDot.png */,
-				DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */,
-				DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */,
-				DDB42CA71592787C0046ED41 /* TrackingDotHalo@2x.png */,
-				DDB42CA81592787C0046ED41 /* TrackingHeading.png */,
-				DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */,
-				DDB42CAA1592787C0046ED41 /* TrackingLocation.png */,
-				DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
