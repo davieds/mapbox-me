@@ -51,7 +51,7 @@
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
-    self.mapView.backgroundColor = kTintColor;
+    self.mapView.backgroundColor = [UIColor colorWithCGColor:CGColorCreateCopyWithAlpha([kTintColor CGColor], 0.75)];
     self.mapView.viewControllerPresentingAttribution = self;
     
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
