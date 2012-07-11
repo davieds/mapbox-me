@@ -12,12 +12,17 @@
 #import "RMMapBoxSource.h"
 #import "RMUserTrackingBarButtonItem.h"
 
-#define kNormalSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
-#define kRetinaSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
+#define kNormalRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
+#define kRetinaRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
+#define kNormalTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-ngrqqx0w.jsonp"]
+#define kRetinaTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-nq0f1vuc.jsonp"]
+
+#define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
 @interface MBMViewController ()
 
 @property (nonatomic, strong) IBOutlet RMMapView *mapView;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 
 @end
 
@@ -26,6 +31,7 @@
 @implementation MBMViewController
 
 @synthesize mapView;
+@synthesize segmentedControl;
 
 - (void)viewDidLoad
 {
@@ -33,28 +39,24 @@
     
     self.title = @"MapBox Me";
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000];
+    [self.segmentedControl addTarget:self action:@selector(toggleMode:) forControlEvents:UIControlEventValueChanged];
+    [self.segmentedControl setSelectedSegmentIndex:0];
     
-    CGRect mapRect = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-    
-    RMMapBoxSource *tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaSourceURL : kNormalSourceURL)];
-    
-    self.mapView = [[RMMapView alloc] initWithFrame:mapRect andTilesource:tileSource];
-    
+    [[UINavigationBar appearance] setTintColor:kTintColor];
+    [[UISegmentedControl appearance] setTintColor:kTintColor];
+    [[UIToolbar appearance] setTintColor:kTintColor];
+
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceURL : kNormalRegularSourceURL)];
     self.mapView.decelerationMode = RMMapDecelerationFast;
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
-    self.mapView.backgroundColor = [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:0.5];
+    self.mapView.backgroundColor = kTintColor;
     self.mapView.viewControllerPresentingAttribution = self;
     
-    self.mapView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    [self.view addSubview:self.mapView];
-    
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-    
-    self.navigationItem.rightBarButtonItem.tintColor = self.navigationController.navigationBar.tintColor;
+
+    self.navigationItem.rightBarButtonItem.tintColor = kTintColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -67,6 +69,27 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait || [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad);
+}
+
+#pragma mark -
+
+- (void)toggleMode:(UISegmentedControl *)sender
+{
+    BOOL isRetina  = ([[UIScreen mainScreen] scale] > 1.0);
+    BOOL isTerrain = (sender.selectedSegmentIndex == 1);
+    
+    NSURL *tileURL;
+    
+    if (isRetina && isTerrain)
+        tileURL = kRetinaTerrainSourceURL;
+    else if (isRetina && ! isTerrain)
+        tileURL = kRetinaRegularSourceURL;
+    else if (! isRetina && isTerrain)
+        tileURL = kNormalTerrainSourceURL;
+    else if (! isRetina && ! isTerrain)
+        tileURL = kNormalRegularSourceURL;
+    
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:tileURL];
 }
 
 @end

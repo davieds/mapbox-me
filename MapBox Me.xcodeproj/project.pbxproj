@@ -13,6 +13,7 @@
 		DD005D211524F386006B9481 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D201524F386006B9481 /* Entitlements.plist */; };
 		DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD57D03C152FA94500584A7C /* libz.dylib */; };
 		DD596135152BB0210086568C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD596130152BB0120086568C /* libMapView.a */; };
+		DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD978F7315ADEB94005AA345 /* MBMViewController.xib */; };
 		DDB42C8F159277480046ED41 /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8D159277480046ED41 /* icon_ipad.png */; };
 		DDB42C90159277480046ED41 /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8E159277480046ED41 /* icon_ipad@2x.png */; };
 		DDB42CAC1592787C0046ED41 /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */; };
@@ -67,6 +68,7 @@
 		DD005D1A1524F0F2006B9481 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		DD005D201524F386006B9481 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
 		DD57D03C152FA94500584A7C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		DD978F7315ADEB94005AA345 /* MBMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMViewController.xib; sourceTree = "<group>"; };
 		DDB42C8D159277480046ED41 /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
 		DDB42C8E159277480046ED41 /* icon_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_ipad@2x.png"; sourceTree = "<group>"; };
 		DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HeadingAngleSmall.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/HeadingAngleSmall.png"; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,7 @@
 				DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */,
 				DDD0B7B71524D4E400EBC267 /* MBMViewController.h */,
 				DDD0B7B81524D4E400EBC267 /* MBMViewController.m */,
+				DD978F7315ADEB94005AA345 /* MBMViewController.xib */,
 				DDD0B7AC1524D4E400EBC267 /* Supporting Files */,
 			);
 			path = "MapBox Me";
@@ -307,6 +310,7 @@
 				DDB42CB31592787C0046ED41 /* TrackingHeading@2x.png in Resources */,
 				DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */,
 				DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */,
+				DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
