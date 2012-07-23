@@ -47,7 +47,6 @@
     [[UIToolbar appearance] setTintColor:kTintColor];
 
     self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceURL : kNormalRegularSourceURL)];
-    self.mapView.decelerationMode = RMMapDecelerationFast;
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
