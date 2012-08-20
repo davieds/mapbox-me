@@ -11,6 +11,7 @@
 		DD005CDF1524EDB1006B9481 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CDD1524EDB1006B9481 /* icon.png */; };
 		DD005D1B1524F0F2006B9481 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D1A1524F0F2006B9481 /* routeme.plist */; };
 		DD005D211524F386006B9481 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D201524F386006B9481 /* Entitlements.plist */; };
+		DD49B8A615E2CD200055CCEE /* LoadingTileZoom.png in Resources */ = {isa = PBXBuildFile; fileRef = DD49B8A515E2CD200055CCEE /* LoadingTileZoom.png */; };
 		DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD57D03C152FA94500584A7C /* libz.dylib */; };
 		DD596135152BB0210086568C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD596130152BB0120086568C /* libMapView.a */; };
 		DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD978F7315ADEB94005AA345 /* MBMViewController.xib */; };
@@ -26,6 +27,7 @@
 		DDB42CB31592787C0046ED41 /* TrackingHeading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */; };
 		DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAA1592787C0046ED41 /* TrackingLocation.png */; };
 		DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */; };
+		DDB537D915DDD17600FFA7F4 /* LoadingTile.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB537D815DDD17600FFA7F4 /* LoadingTile.png */; };
 		DDD0B7A61524D4E400EBC267 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A51524D4E400EBC267 /* UIKit.framework */; };
 		DDD0B7A81524D4E400EBC267 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A71524D4E400EBC267 /* Foundation.framework */; };
 		DDD0B7AA1524D4E400EBC267 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A91524D4E400EBC267 /* CoreGraphics.framework */; };
@@ -60,6 +62,7 @@
 		DD005CDD1524EDB1006B9481 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DD005D1A1524F0F2006B9481 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		DD005D201524F386006B9481 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
+		DD49B8A515E2CD200055CCEE /* LoadingTileZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTileZoom.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/LoadingTileZoom.png"; sourceTree = SOURCE_ROOT; };
 		DD57D03C152FA94500584A7C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD978F7315ADEB94005AA345 /* MBMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMViewController.xib; sourceTree = "<group>"; };
 		DDB42C8D159277480046ED41 /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		DDB42CA91592787C0046ED41 /* TrackingHeading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingHeading@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingHeading@2x.png"; sourceTree = SOURCE_ROOT; };
 		DDB42CAA1592787C0046ED41 /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingLocation.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation.png"; sourceTree = SOURCE_ROOT; };
 		DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingLocation@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation@2x.png"; sourceTree = SOURCE_ROOT; };
+		DDB537D815DDD17600FFA7F4 /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTile.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/LoadingTile.png"; sourceTree = SOURCE_ROOT; };
 		DDD0B7A11524D4E400EBC267 /* MapBox Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MapBox Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD0B7A51524D4E400EBC267 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DDD0B7A71524D4E400EBC267 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -129,6 +133,8 @@
 				DD005D1A1524F0F2006B9481 /* routeme.plist */,
 				DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */,
 				DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */,
+				DDB537D815DDD17600FFA7F4 /* LoadingTile.png */,
+				DD49B8A515E2CD200055CCEE /* LoadingTileZoom.png */,
 				DDB42CA41592787C0046ED41 /* TrackingDot.png */,
 				DDB42CA51592787C0046ED41 /* TrackingDot@2x.png */,
 				DDB42CA61592787C0046ED41 /* TrackingDotHalo.png */,
@@ -296,6 +302,8 @@
 				DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */,
 				DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */,
 				DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */,
+				DDB537D915DDD17600FFA7F4 /* LoadingTile.png in Resources */,
+				DD49B8A615E2CD200055CCEE /* LoadingTileZoom.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
