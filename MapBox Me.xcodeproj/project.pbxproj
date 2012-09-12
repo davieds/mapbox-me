@@ -15,6 +15,7 @@
 		DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD57D03C152FA94500584A7C /* libz.dylib */; };
 		DD596135152BB0210086568C /* libMapView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD596130152BB0120086568C /* libMapView.a */; };
 		DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD978F7315ADEB94005AA345 /* MBMViewController.xib */; };
+		DD9BFE1916013F250011F174 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DD9BFE1816013F250011F174 /* Default-568h@2x.png */; };
 		DDB42C8F159277480046ED41 /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8D159277480046ED41 /* icon_ipad.png */; };
 		DDB42C90159277480046ED41 /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8E159277480046ED41 /* icon_ipad@2x.png */; };
 		DDB42CAC1592787C0046ED41 /* HeadingAngleSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */; };
@@ -65,6 +66,7 @@
 		DD49B8A515E2CD200055CCEE /* LoadingTileZoom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTileZoom.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/LoadingTileZoom.png"; sourceTree = SOURCE_ROOT; };
 		DD57D03C152FA94500584A7C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD978F7315ADEB94005AA345 /* MBMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMViewController.xib; sourceTree = "<group>"; };
+		DD9BFE1816013F250011F174 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		DDB42C8D159277480046ED41 /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
 		DDB42C8E159277480046ED41 /* icon_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_ipad@2x.png"; sourceTree = "<group>"; };
 		DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = HeadingAngleSmall.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/HeadingAngleSmall.png"; sourceTree = SOURCE_ROOT; };
@@ -202,6 +204,7 @@
 				DDD0B7B11524D4E400EBC267 /* main.m */,
 				DDD0B7B31524D4E400EBC267 /* MapBox Me-Prefix.pch */,
 				DD005D201524F386006B9481 /* Entitlements.plist */,
+				DD9BFE1816013F250011F174 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 				DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */,
 				DDB537D915DDD17600FFA7F4 /* LoadingTile.png in Resources */,
 				DD49B8A615E2CD200055CCEE /* LoadingTileZoom.png in Resources */,
+				DD9BFE1916013F250011F174 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
