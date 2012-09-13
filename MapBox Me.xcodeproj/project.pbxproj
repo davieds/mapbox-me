@@ -29,6 +29,8 @@
 		DDB42CB41592787C0046ED41 /* TrackingLocation.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAA1592787C0046ED41 /* TrackingLocation.png */; };
 		DDB42CB51592787C0046ED41 /* TrackingLocation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */; };
 		DDB537D915DDD17600FFA7F4 /* LoadingTile.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB537D815DDD17600FFA7F4 /* LoadingTile.png */; };
+		DDC006D416015B3F00E42892 /* mapbox.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC006D216015B3F00E42892 /* mapbox.png */; };
+		DDC006D516015B3F00E42892 /* mapbox@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDC006D316015B3F00E42892 /* mapbox@2x.png */; };
 		DDD0B7A61524D4E400EBC267 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A51524D4E400EBC267 /* UIKit.framework */; };
 		DDD0B7A81524D4E400EBC267 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A71524D4E400EBC267 /* Foundation.framework */; };
 		DDD0B7AA1524D4E400EBC267 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7A91524D4E400EBC267 /* CoreGraphics.framework */; };
@@ -80,6 +82,8 @@
 		DDB42CAA1592787C0046ED41 /* TrackingLocation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = TrackingLocation.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation.png"; sourceTree = SOURCE_ROOT; };
 		DDB42CAB1592787C0046ED41 /* TrackingLocation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "TrackingLocation@2x.png"; path = "MapBox-iOS-SDK/MapView/Map/Resources/TrackingLocation@2x.png"; sourceTree = SOURCE_ROOT; };
 		DDB537D815DDD17600FFA7F4 /* LoadingTile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = LoadingTile.png; path = "MapBox-iOS-SDK/MapView/Map/Resources/LoadingTile.png"; sourceTree = SOURCE_ROOT; };
+		DDC006D216015B3F00E42892 /* mapbox.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = mapbox.png; path = "../MapBox-iOS-SDK/MapView/Map/Resources/mapbox.png"; sourceTree = "<group>"; };
+		DDC006D316015B3F00E42892 /* mapbox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = file; name = "mapbox@2x.png"; path = "../MapBox-iOS-SDK/MapView/Map/Resources/mapbox@2x.png"; sourceTree = "<group>"; };
 		DDD0B7A11524D4E400EBC267 /* MapBox Me.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MapBox Me.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD0B7A51524D4E400EBC267 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		DDD0B7A71524D4E400EBC267 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -134,6 +138,8 @@
 				DDB42C8E159277480046ED41 /* icon_ipad@2x.png */,
 				DD9BFE1816013F250011F174 /* Default-568h@2x.png */,
 				DD005D1A1524F0F2006B9481 /* routeme.plist */,
+				DDC006D216015B3F00E42892 /* mapbox.png */,
+				DDC006D316015B3F00E42892 /* mapbox@2x.png */,
 				DDB42CA21592787C0046ED41 /* HeadingAngleSmall.png */,
 				DDB42CA31592787C0046ED41 /* HeadingAngleSmall@2x.png */,
 				DDB537D815DDD17600FFA7F4 /* LoadingTile.png */,
@@ -308,6 +314,8 @@
 				DDB537D915DDD17600FFA7F4 /* LoadingTile.png in Resources */,
 				DD49B8A615E2CD200055CCEE /* LoadingTileZoom.png in Resources */,
 				DD9BFE1916013F250011F174 /* Default-568h@2x.png in Resources */,
+				DDC006D416015B3F00E42892 /* mapbox.png in Resources */,
+				DDC006D516015B3F00E42892 /* mapbox@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
