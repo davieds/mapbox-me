@@ -8,9 +8,7 @@
 
 #import "MBMViewController.h"
 
-#import "RMMapView.h"
-#import "RMMapBoxSource.h"
-#import "RMUserTrackingBarButtonItem.h"
+#import "MapBox.h"
 
 #define kNormalRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
 #define kRetinaRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
