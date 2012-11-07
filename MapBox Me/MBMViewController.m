@@ -48,7 +48,6 @@
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
-    self.mapView.viewControllerPresentingAttribution = self;
     
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
 
