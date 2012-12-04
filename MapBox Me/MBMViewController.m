@@ -10,10 +10,10 @@
 
 #import "MapBox.h"
 
-#define kNormalRegularSourceID @"justin.map-s2effxa8"
-#define kRetinaRegularSourceID @"justin.map-kswgei2n"
-#define kNormalTerrainSourceID @"justin.map-ngrqqx0w"
-#define kRetinaTerrainSourceID @"justin.map-nq0f1vuc"
+#define kRegular1xSourceID @"justin.map-s2effxa8"
+#define kRegular2xSourceID @"justin.map-kswgei2n"
+#define kTerrain1xSourceID @"justin.map-ngrqqx0w"
+#define kTerrain2xSourceID @"justin.map-nq0f1vuc"
 
 #define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
@@ -44,7 +44,7 @@
     [[UISegmentedControl appearance] setTintColor:kTintColor];
     [[UIToolbar appearance] setTintColor:kTintColor];
 
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceID : kNormalRegularSourceID)];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRegular2xSourceID : kRegular1xSourceID)];
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
@@ -76,13 +76,13 @@
     NSString *mapID;
     
     if (isRetina && isTerrain)
-        mapID = kRetinaTerrainSourceID;
+        mapID = kTerrain2xSourceID;
     else if (isRetina && ! isTerrain)
-        mapID = kRetinaRegularSourceID;
+        mapID = kRegular2xSourceID;
     else if (! isRetina && isTerrain)
-        mapID = kNormalTerrainSourceID;
+        mapID = kTerrain1xSourceID;
     else if (! isRetina && ! isTerrain)
-        mapID = kNormalRegularSourceID;
+        mapID = kRegular1xSourceID;
     
     self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:mapID];
 }
