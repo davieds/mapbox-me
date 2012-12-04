@@ -10,10 +10,10 @@
 
 #import "MapBox.h"
 
-#define kNormalRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
-#define kRetinaRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
-#define kNormalTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-ngrqqx0w.jsonp"]
-#define kRetinaTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-nq0f1vuc.jsonp"]
+#define kNormalRegularSourceID @"justin.map-s2effxa8"
+#define kRetinaRegularSourceID @"justin.map-kswgei2n"
+#define kNormalTerrainSourceID @"justin.map-ngrqqx0w"
+#define kRetinaTerrainSourceID @"justin.map-nq0f1vuc"
 
 #define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
@@ -44,7 +44,7 @@
     [[UISegmentedControl appearance] setTintColor:kTintColor];
     [[UIToolbar appearance] setTintColor:kTintColor];
 
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceURL : kNormalRegularSourceURL)];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceID : kNormalRegularSourceID)];
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
@@ -73,18 +73,18 @@
     BOOL isRetina  = ([[UIScreen mainScreen] scale] > 1.0);
     BOOL isTerrain = (sender.selectedSegmentIndex == 1);
     
-    NSURL *tileURL;
+    NSString *mapID;
     
     if (isRetina && isTerrain)
-        tileURL = kRetinaTerrainSourceURL;
+        mapID = kRetinaTerrainSourceID;
     else if (isRetina && ! isTerrain)
-        tileURL = kRetinaRegularSourceURL;
+        mapID = kRetinaRegularSourceID;
     else if (! isRetina && isTerrain)
-        tileURL = kNormalTerrainSourceURL;
+        mapID = kNormalTerrainSourceID;
     else if (! isRetina && ! isTerrain)
-        tileURL = kNormalRegularSourceURL;
+        mapID = kNormalRegularSourceID;
     
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:tileURL];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:mapID];
 }
 
 @end
