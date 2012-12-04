@@ -80,7 +80,7 @@
         mapID = kSatellite2xSourceID;
     else if (isRetina && sender.selectedSegmentIndex == 1)
         mapID = kTerrain2xSourceID;
-    else if (isRetina && ! sender.selectedSegmentIndex == 0)
+    else if (isRetina && sender.selectedSegmentIndex == 0)
         mapID = kRegular2xSourceID;
     else if ( ! isRetina && sender.selectedSegmentIndex == 2)
         mapID = kSatellite1xSourceID;
