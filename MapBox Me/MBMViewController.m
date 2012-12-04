@@ -10,10 +10,12 @@
 
 #import "MapBox.h"
 
-#define kRegular1xSourceID @"justin.map-s2effxa8"
-#define kRegular2xSourceID @"justin.map-kswgei2n"
-#define kTerrain1xSourceID @"justin.map-ngrqqx0w"
-#define kTerrain2xSourceID @"justin.map-nq0f1vuc"
+#define kRegular1xSourceID   @"justin.map-s2effxa8"
+#define kRegular2xSourceID   @"justin.map-kswgei2n"
+#define kTerrain1xSourceID   @"justin.map-ngrqqx0w"
+#define kTerrain2xSourceID   @"justin.map-nq0f1vuc"
+#define kSatellite1xSourceID @"justin.map-1yt2v9k2"
+#define kSatellite2xSourceID @"justin.map-lga3rxng"
 
 #define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
@@ -71,17 +73,20 @@
 - (void)toggleMode:(UISegmentedControl *)sender
 {
     BOOL isRetina  = ([[UIScreen mainScreen] scale] > 1.0);
-    BOOL isTerrain = (sender.selectedSegmentIndex == 1);
-    
+
     NSString *mapID;
     
-    if (isRetina && isTerrain)
+    if (isRetina && sender.selectedSegmentIndex == 2)
+        mapID = kSatellite2xSourceID;
+    else if (isRetina && sender.selectedSegmentIndex == 1)
         mapID = kTerrain2xSourceID;
-    else if (isRetina && ! isTerrain)
+    else if (isRetina && ! sender.selectedSegmentIndex == 0)
         mapID = kRegular2xSourceID;
-    else if (! isRetina && isTerrain)
+    else if ( ! isRetina && sender.selectedSegmentIndex == 2)
+        mapID = kSatellite1xSourceID;
+    else if ( ! isRetina && sender.selectedSegmentIndex == 1)
         mapID = kTerrain1xSourceID;
-    else if (! isRetina && ! isTerrain)
+    else if ( ! isRetina && sender.selectedSegmentIndex == 0)
         mapID = kRegular1xSourceID;
     
     self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:mapID];
