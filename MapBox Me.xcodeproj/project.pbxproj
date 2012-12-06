@@ -12,7 +12,6 @@
 		DD005CDF1524EDB1006B9481 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DD005CDD1524EDB1006B9481 /* icon.png */; };
 		DD005D1B1524F0F2006B9481 /* routeme.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D1A1524F0F2006B9481 /* routeme.plist */; };
 		DD005D211524F386006B9481 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD005D201524F386006B9481 /* Entitlements.plist */; };
-		DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DD57D03C152FA94500584A7C /* libz.dylib */; };
 		DD978F7415ADEB94005AA345 /* MBMViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD978F7315ADEB94005AA345 /* MBMViewController.xib */; };
 		DDB42C8F159277480046ED41 /* icon_ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8D159277480046ED41 /* icon_ipad.png */; };
 		DDB42C90159277480046ED41 /* icon_ipad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB42C8E159277480046ED41 /* icon_ipad@2x.png */; };
@@ -23,9 +22,6 @@
 		DDD0B7B21524D4E400EBC267 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B11524D4E400EBC267 /* main.m */; };
 		DDD0B7B61524D4E400EBC267 /* MBMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */; };
 		DDD0B7B91524D4E400EBC267 /* MBMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDD0B7B81524D4E400EBC267 /* MBMViewController.m */; };
-		DDD0B7C31524D52B00EBC267 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7C21524D52B00EBC267 /* CoreLocation.framework */; };
-		DDD0B7DD1524D6EA00EBC267 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7DC1524D6EA00EBC267 /* libsqlite3.dylib */; };
-		DDD0B7DF1524D6FB00EBC267 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDD0B7DE1524D6FB00EBC267 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +31,6 @@
 		DD005CDD1524EDB1006B9481 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		DD005D1A1524F0F2006B9481 /* routeme.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = routeme.plist; sourceTree = "<group>"; };
 		DD005D201524F386006B9481 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = SOURCE_ROOT; };
-		DD57D03C152FA94500584A7C /* libz.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		DD978F7315ADEB94005AA345 /* MBMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MBMViewController.xib; sourceTree = "<group>"; };
 		DDB42C8D159277480046ED41 /* icon_ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ipad.png; sourceTree = "<group>"; };
 		DDB42C8E159277480046ED41 /* icon_ipad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_ipad@2x.png"; sourceTree = "<group>"; };
@@ -51,9 +46,6 @@
 		DDD0B7B51524D4E400EBC267 /* MBMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBMAppDelegate.m; sourceTree = "<group>"; };
 		DDD0B7B71524D4E400EBC267 /* MBMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MBMViewController.h; sourceTree = "<group>"; };
 		DDD0B7B81524D4E400EBC267 /* MBMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MBMViewController.m; sourceTree = "<group>"; };
-		DDD0B7C21524D52B00EBC267 /* CoreLocation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		DDD0B7DC1524D6EA00EBC267 /* libsqlite3.dylib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		DDD0B7DE1524D6FB00EBC267 /* QuartzCore.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +54,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDD0B7AA1524D4E400EBC267 /* CoreGraphics.framework in Frameworks */,
-				DDD0B7C31524D52B00EBC267 /* CoreLocation.framework in Frameworks */,
 				DDD0B7A81524D4E400EBC267 /* Foundation.framework in Frameworks */,
-				DDD0B7DF1524D6FB00EBC267 /* QuartzCore.framework in Frameworks */,
 				DDD0B7A61524D4E400EBC267 /* UIKit.framework in Frameworks */,
-				DDD0B7DD1524D6EA00EBC267 /* libsqlite3.dylib in Frameworks */,
-				DD57D03D152FA94500584A7C /* libz.dylib in Frameworks */,
 				40DD11E377D44F4385FCFBCD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -111,12 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				DDD0B7A91524D4E400EBC267 /* CoreGraphics.framework */,
-				DDD0B7C21524D52B00EBC267 /* CoreLocation.framework */,
 				DDD0B7A71524D4E400EBC267 /* Foundation.framework */,
-				DDD0B7DE1524D6FB00EBC267 /* QuartzCore.framework */,
 				DDD0B7A51524D4E400EBC267 /* UIKit.framework */,
-				DDD0B7DC1524D6EA00EBC267 /* libsqlite3.dylib */,
-				DD57D03C152FA94500584A7C /* libz.dylib */,
 				4020F4A3DCB3498897529EA5 /* libPods.a */,
 			);
 			name = Frameworks;
