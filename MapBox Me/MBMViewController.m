@@ -8,14 +8,14 @@
 
 #import "MBMViewController.h"
 
-#import "RMMapView.h"
-#import "RMMapBoxSource.h"
-#import "RMUserTrackingBarButtonItem.h"
+#import "MapBox.h"
 
-#define kNormalRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-s2effxa8.jsonp"]
-#define kRetinaRegularSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-kswgei2n.jsonp"]
-#define kNormalTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-ngrqqx0w.jsonp"]
-#define kRetinaTerrainSourceURL [NSURL URLWithString:@"http://a.tiles.mapbox.com/v3/justin.map-nq0f1vuc.jsonp"]
+#define kRegular1xSourceID   @"justin.map-s2effxa8"
+#define kRegular2xSourceID   @"justin.map-kswgei2n"
+#define kTerrain1xSourceID   @"justin.map-ngrqqx0w"
+#define kTerrain2xSourceID   @"justin.map-nq0f1vuc"
+#define kSatellite1xSourceID @"justin.map-1yt2v9k2"
+#define kSatellite2xSourceID @"justin.map-lga3rxng"
 
 #define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
@@ -46,11 +46,10 @@
     [[UISegmentedControl appearance] setTintColor:kTintColor];
     [[UIToolbar appearance] setTintColor:kTintColor];
 
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:(([[UIScreen mainScreen] scale] > 1.0) ? kRetinaRegularSourceURL : kNormalRegularSourceURL)];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRegular2xSourceID : kRegular1xSourceID)];
     self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
-    self.mapView.viewControllerPresentingAttribution = self;
     
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
 
@@ -74,20 +73,23 @@
 - (void)toggleMode:(UISegmentedControl *)sender
 {
     BOOL isRetina  = ([[UIScreen mainScreen] scale] > 1.0);
-    BOOL isTerrain = (sender.selectedSegmentIndex == 1);
+
+    NSString *mapID;
     
-    NSURL *tileURL;
+    if (isRetina && sender.selectedSegmentIndex == 2)
+        mapID = kSatellite2xSourceID;
+    else if (isRetina && sender.selectedSegmentIndex == 1)
+        mapID = kTerrain2xSourceID;
+    else if (isRetina && sender.selectedSegmentIndex == 0)
+        mapID = kRegular2xSourceID;
+    else if ( ! isRetina && sender.selectedSegmentIndex == 2)
+        mapID = kSatellite1xSourceID;
+    else if ( ! isRetina && sender.selectedSegmentIndex == 1)
+        mapID = kTerrain1xSourceID;
+    else if ( ! isRetina && sender.selectedSegmentIndex == 0)
+        mapID = kRegular1xSourceID;
     
-    if (isRetina && isTerrain)
-        tileURL = kRetinaTerrainSourceURL;
-    else if (isRetina && ! isTerrain)
-        tileURL = kRetinaRegularSourceURL;
-    else if (! isRetina && isTerrain)
-        tileURL = kNormalTerrainSourceURL;
-    else if (! isRetina && ! isTerrain)
-        tileURL = kNormalRegularSourceURL;
-    
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithReferenceURL:tileURL];
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:mapID];
 }
 
 @end
