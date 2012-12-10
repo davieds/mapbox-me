@@ -10,12 +10,12 @@
 
 #import "MapBox.h"
 
-#define kRegular1xSourceID   @"justin.map-s2effxa8"
-#define kRegular2xSourceID   @"justin.map-kswgei2n"
-#define kTerrain1xSourceID   @"justin.map-ngrqqx0w"
-#define kTerrain2xSourceID   @"justin.map-nq0f1vuc"
-#define kSatellite1xSourceID @"justin.map-1yt2v9k2"
-#define kSatellite2xSourceID @"justin.map-lga3rxng"
+#define kRegular1xSourceID   @"examples.map-z2effxa8"
+#define kRegular2xSourceID   @"examples.map-zswgei2n"
+#define kTerrain1xSourceID   @"examples.map-zgrqqx0w"
+#define kTerrain2xSourceID   @"examples.map-zq0f1vuc"
+#define kSatellite1xSourceID @"examples.map-zyt2v9k2"
+#define kSatellite2xSourceID @"examples.map-zga3rxng"
 
 #define kTintColor [UIColor colorWithRed:0.120 green:0.550 blue:0.670 alpha:1.000]
 
