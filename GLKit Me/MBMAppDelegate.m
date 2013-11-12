@@ -1,6 +1,6 @@
 //
 //  MBMAppDelegate.m
-//  MapBox Me
+//  GLKit Me
 //
 //  Created by Justin Miller on 3/29/12.
 //  Copyright (c) 2012 MapBox / Development Seed. All rights reserved.

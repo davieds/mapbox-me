@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'MapBox Me' target in the 'MapBox Me' project
+// Prefix header for all source files of the 'GLKit Me' target in the 'GLKit Me' project
 //
 
 #import <Availability.h>

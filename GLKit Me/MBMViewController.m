@@ -1,6 +1,6 @@
 //
 //  MBMViewController.m
-//  MapBox Me
+//  GLKit Me
 //
 //  Created by Justin Miller on 3/29/12.
 //  Copyright (c) 2012 MapBox / Development Seed. All rights reserved.
@@ -37,10 +37,11 @@
 {
     [super viewDidLoad];
     
-    self.title = @"MapBox Me";
+    self.title = @"GLKit Me";
     
     [self.segmentedControl addTarget:self action:@selector(toggleMode:) forControlEvents:UIControlEventValueChanged];
     [self.segmentedControl setSelectedSegmentIndex:0];
+    self.segmentedControl.hidden = YES;
     
     [[UINavigationBar appearance] setTintColor:kTintColor];
     [[UISegmentedControl appearance] setTintColor:kTintColor];
@@ -51,7 +52,7 @@
     self.mapView.minZoom = 1;
     self.mapView.zoom = 2;
     
-    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+//    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
 
     self.navigationItem.rightBarButtonItem.tintColor = kTintColor;
 }
@@ -60,7 +61,9 @@
 {
     [super viewDidAppear:animated];
 
-    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+//    self.mapView.userTrackingMode = RMUserTrackingModeFollow;
+
+    [self.mapView setZoom:17 atCoordinate:CLLocationCoordinate2DMake(45.52413426364824, -122.67456293106079) animated:NO];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
