@@ -46,19 +46,17 @@
     [[UISegmentedControl appearance] setTintColor:kTintColor];
     [[UIToolbar appearance] setTintColor:kTintColor];
 
-    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRegular2xSourceID : kRegular1xSourceID)];
-    self.mapView.centerCoordinate = CLLocationCoordinate2DMake(0, 0);
-    self.mapView.minZoom = 1;
-    self.mapView.zoom = 2;
-    
-    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
-
-    self.navigationItem.rightBarButtonItem.tintColor = kTintColor;
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+
+    self.mapView.tileSource = [[RMMapBoxSource alloc] initWithMapID:(([[UIScreen mainScreen] scale] > 1.0) ? kRegular2xSourceID : kRegular1xSourceID)];
+
+    self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
+
+    self.navigationItem.rightBarButtonItem.tintColor = kTintColor;
 
     self.mapView.userTrackingMode = RMUserTrackingModeFollow;
 }
