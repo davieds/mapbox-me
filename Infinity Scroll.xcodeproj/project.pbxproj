@@ -14,7 +14,10 @@
 		DDB505661845586E00A19018 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505651845586E00A19018 /* main.m */; };
 		DDB5056A1845586E00A19018 /* ISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505691845586E00A19018 /* ISAppDelegate.m */; };
 		DDB505701845586E00A19018 /* ISViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5056F1845586E00A19018 /* ISViewController.m */; };
-		DDB5058F18455A9900A19018 /* LoadingTile6.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5058E18455A9900A19018 /* LoadingTile6.png */; };
+		DDB5058F18455A9900A19018 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5058E18455A9900A19018 /* tile.png */; };
+		DDB5059118455B2D00A19018 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5059018455B2D00A19018 /* GLKit.framework */; };
+		DDB5059318455B3100A19018 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5059218455B3100A19018 /* OpenGLES.framework */; };
+		DDB5059918455CE900A19018 /* ISWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5059818455CE900A19018 /* ISWrapperView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +33,11 @@
 		DDB505691845586E00A19018 /* ISAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISAppDelegate.m; sourceTree = "<group>"; };
 		DDB5056E1845586E00A19018 /* ISViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISViewController.h; sourceTree = "<group>"; };
 		DDB5056F1845586E00A19018 /* ISViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISViewController.m; sourceTree = "<group>"; };
-		DDB5058E18455A9900A19018 /* LoadingTile6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingTile6.png; sourceTree = "<group>"; };
+		DDB5058E18455A9900A19018 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		DDB5059018455B2D00A19018 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		DDB5059218455B3100A19018 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		DDB5059718455CE900A19018 /* ISWrapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISWrapperView.h; sourceTree = "<group>"; };
+		DDB5059818455CE900A19018 /* ISWrapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISWrapperView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +47,8 @@
 			files = (
 				DDB5055C1845586E00A19018 /* CoreGraphics.framework in Frameworks */,
 				DDB5055A1845586E00A19018 /* Foundation.framework in Frameworks */,
+				DDB5059118455B2D00A19018 /* GLKit.framework in Frameworks */,
+				DDB5059318455B3100A19018 /* OpenGLES.framework in Frameworks */,
 				DDB5055E1845586E00A19018 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +78,8 @@
 			children = (
 				DDB5055B1845586E00A19018 /* CoreGraphics.framework */,
 				DDB505591845586E00A19018 /* Foundation.framework */,
+				DDB5059018455B2D00A19018 /* GLKit.framework */,
+				DDB5059218455B3100A19018 /* OpenGLES.framework */,
 				DDB5055D1845586E00A19018 /* UIKit.framework */,
 			);
 			name = Frameworks;
@@ -81,7 +92,9 @@
 				DDB505691845586E00A19018 /* ISAppDelegate.m */,
 				DDB5056E1845586E00A19018 /* ISViewController.h */,
 				DDB5056F1845586E00A19018 /* ISViewController.m */,
-				DDB5058E18455A9900A19018 /* LoadingTile6.png */,
+				DDB5059718455CE900A19018 /* ISWrapperView.h */,
+				DDB5059818455CE900A19018 /* ISWrapperView.m */,
+				DDB5058E18455A9900A19018 /* tile.png */,
 				DDB505601845586E00A19018 /* Supporting Files */,
 			);
 			path = "Infinity Scroll";
@@ -152,7 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB505641845586E00A19018 /* InfoPlist.strings in Resources */,
-				DDB5058F18455A9900A19018 /* LoadingTile6.png in Resources */,
+				DDB5058F18455A9900A19018 /* tile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +179,7 @@
 				DDB5056A1845586E00A19018 /* ISAppDelegate.m in Sources */,
 				DDB505661845586E00A19018 /* main.m in Sources */,
 				DDB505701845586E00A19018 /* ISViewController.m in Sources */,
+				DDB5059918455CE900A19018 /* ISWrapperView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

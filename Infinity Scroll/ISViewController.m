@@ -8,6 +8,8 @@
 
 #import "ISViewController.h"
 
+#import "ISWrapperView.h"
+
 @implementation ISViewController
 
 - (void)viewDidLoad
@@ -16,16 +18,7 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
 
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake((self.view.bounds.size.width - 512) / 2, (self.view.bounds.size.height - 512) / 2, 512, 512)];
-    scrollView.contentSize = CGSizeMake(1024, 1024);
-    scrollView.scrollEnabled = YES;
-    scrollView.bounces = NO;
-    scrollView.backgroundColor = [UIColor darkGrayColor];
-    [self.view addSubview:scrollView];
-
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 1024, 1024)];
-    contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"LoadingTile6.png"]];
-    [scrollView addSubview:contentView];
+    [self.view addSubview:[[ISWrapperView alloc] initWithFrame:CGRectMake(128, 128, 512, 512)]];
 }
 
 @end
