@@ -72,7 +72,7 @@
     {
         _scrollView = [[ISScrollView alloc] initWithFrame:self.bounds];
         _scrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, self.bounds.size.width * 3);
-        _scrollView.contentOffset = CGPointMake(self.bounds.size.width, self.bounds.size.height);
+        _scrollView.contentOffset = CGPointMake(0, 0);
         _scrollView.scrollEnabled = YES;
         _scrollView.bounces = NO;
         _scrollView.backgroundColor = [UIColor redColor];
@@ -96,12 +96,29 @@
 
 #pragma mark -
 
+- (CGPoint)clampedWorldOffset:(CGPoint)offset
+{
+    CGFloat newX, newY;
+
+    CGFloat maxDimension = powf(2.0, self.worldZoom) * 256;
+
+    newX = fminf(offset.x, maxDimension);
+    newX = fmaxf(newX, 0);
+
+    newY = fminf(offset.y, maxDimension);
+    newY = fmaxf(newY, 0);
+
+    return CGPointMake(newX, newY);
+}
+
+#pragma mark -
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat dx = self.scrollView.contentOffset.x - self.lastContentOffset.x;
     CGFloat dy = self.scrollView.contentOffset.y - self.lastContentOffset.y;
 
-    self.worldOffset = CGPointMake(self.worldOffset.x + dx, self.worldOffset.y + dy);
+    self.worldOffset =  [self clampedWorldOffset:CGPointMake(self.worldOffset.x + dx, self.worldOffset.y + dy)];
 
     NSLog(@"world offset: %@", [NSValue valueWithCGPoint:self.worldOffset]);
 
@@ -110,7 +127,7 @@
 
 - (void)scrollView:(UIScrollView *)scrollView willRecenterWithDelta:(CGPoint)delta
 {
-    self.worldOffset = CGPointMake(self.worldOffset.x + delta.x, self.worldOffset.y + delta.y);
+    self.worldOffset = [self clampedWorldOffset:CGPointMake(self.worldOffset.x + delta.x, self.worldOffset.y + delta.y)];
 }
 
 #pragma mark -
