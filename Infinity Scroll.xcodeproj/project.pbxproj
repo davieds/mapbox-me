@@ -14,6 +14,7 @@
 		DDB505661845586E00A19018 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505651845586E00A19018 /* main.m */; };
 		DDB5056A1845586E00A19018 /* ISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505691845586E00A19018 /* ISAppDelegate.m */; };
 		DDB505701845586E00A19018 /* ISViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5056F1845586E00A19018 /* ISViewController.m */; };
+		DDB5058F18455A9900A19018 /* LoadingTile6.png in Resources */ = {isa = PBXBuildFile; fileRef = DDB5058E18455A9900A19018 /* LoadingTile6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		DDB505691845586E00A19018 /* ISAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISAppDelegate.m; sourceTree = "<group>"; };
 		DDB5056E1845586E00A19018 /* ISViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISViewController.h; sourceTree = "<group>"; };
 		DDB5056F1845586E00A19018 /* ISViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISViewController.m; sourceTree = "<group>"; };
+		DDB5058E18455A9900A19018 /* LoadingTile6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoadingTile6.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				DDB505691845586E00A19018 /* ISAppDelegate.m */,
 				DDB5056E1845586E00A19018 /* ISViewController.h */,
 				DDB5056F1845586E00A19018 /* ISViewController.m */,
+				DDB5058E18455A9900A19018 /* LoadingTile6.png */,
 				DDB505601845586E00A19018 /* Supporting Files */,
 			);
 			path = "Infinity Scroll";
@@ -149,6 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB505641845586E00A19018 /* InfoPlist.strings in Resources */,
+				DDB5058F18455A9900A19018 /* LoadingTile6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
