@@ -13,25 +13,8 @@
 		DDB505641845586E00A19018 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDB505621845586E00A19018 /* InfoPlist.strings */; };
 		DDB505661845586E00A19018 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505651845586E00A19018 /* main.m */; };
 		DDB5056A1845586E00A19018 /* ISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505691845586E00A19018 /* ISAppDelegate.m */; };
-		DDB5056D1845586E00A19018 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDB5056B1845586E00A19018 /* Main.storyboard */; };
 		DDB505701845586E00A19018 /* ISViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5056F1845586E00A19018 /* ISViewController.m */; };
-		DDB505721845586E00A19018 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDB505711845586E00A19018 /* Images.xcassets */; };
-		DDB505791845586E00A19018 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB505781845586E00A19018 /* XCTest.framework */; };
-		DDB5057A1845586E00A19018 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB505591845586E00A19018 /* Foundation.framework */; };
-		DDB5057B1845586E00A19018 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5055D1845586E00A19018 /* UIKit.framework */; };
-		DDB505831845586E00A19018 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DDB505811845586E00A19018 /* InfoPlist.strings */; };
-		DDB505851845586E00A19018 /* Infinity_ScrollTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB505841845586E00A19018 /* Infinity_ScrollTests.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		DDB5057C1845586E00A19018 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DDB5054E1845586E00A19018 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DDB505551845586E00A19018;
-			remoteInfo = "Infinity Scroll";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		DDB505561845586E00A19018 /* Infinity Scroll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Infinity Scroll.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,15 +27,8 @@
 		DDB505671845586E00A19018 /* Infinity Scroll-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Infinity Scroll-Prefix.pch"; sourceTree = "<group>"; };
 		DDB505681845586E00A19018 /* ISAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISAppDelegate.h; sourceTree = "<group>"; };
 		DDB505691845586E00A19018 /* ISAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISAppDelegate.m; sourceTree = "<group>"; };
-		DDB5056C1845586E00A19018 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDB5056E1845586E00A19018 /* ISViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISViewController.h; sourceTree = "<group>"; };
 		DDB5056F1845586E00A19018 /* ISViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISViewController.m; sourceTree = "<group>"; };
-		DDB505711845586E00A19018 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		DDB505771845586E00A19018 /* Infinity ScrollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Infinity ScrollTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DDB505781845586E00A19018 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		DDB505801845586E00A19018 /* Infinity ScrollTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Infinity ScrollTests-Info.plist"; sourceTree = "<group>"; };
-		DDB505821845586E00A19018 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		DDB505841845586E00A19018 /* Infinity_ScrollTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Infinity_ScrollTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,18 +37,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDB5055C1845586E00A19018 /* CoreGraphics.framework in Frameworks */,
-				DDB5055E1845586E00A19018 /* UIKit.framework in Frameworks */,
 				DDB5055A1845586E00A19018 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DDB505741845586E00A19018 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDB505791845586E00A19018 /* XCTest.framework in Frameworks */,
-				DDB5057B1845586E00A19018 /* UIKit.framework in Frameworks */,
-				DDB5057A1845586E00A19018 /* Foundation.framework in Frameworks */,
+				DDB5055E1845586E00A19018 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +49,6 @@
 			isa = PBXGroup;
 			children = (
 				DDB5055F1845586E00A19018 /* Infinity Scroll */,
-				DDB5057E1845586E00A19018 /* Infinity ScrollTests */,
 				DDB505581845586E00A19018 /* Frameworks */,
 				DDB505571845586E00A19018 /* Products */,
 			);
@@ -93,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				DDB505561845586E00A19018 /* Infinity Scroll.app */,
-				DDB505771845586E00A19018 /* Infinity ScrollTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,10 +65,9 @@
 		DDB505581845586E00A19018 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DDB505591845586E00A19018 /* Foundation.framework */,
 				DDB5055B1845586E00A19018 /* CoreGraphics.framework */,
+				DDB505591845586E00A19018 /* Foundation.framework */,
 				DDB5055D1845586E00A19018 /* UIKit.framework */,
-				DDB505781845586E00A19018 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -114,10 +77,8 @@
 			children = (
 				DDB505681845586E00A19018 /* ISAppDelegate.h */,
 				DDB505691845586E00A19018 /* ISAppDelegate.m */,
-				DDB5056B1845586E00A19018 /* Main.storyboard */,
 				DDB5056E1845586E00A19018 /* ISViewController.h */,
 				DDB5056F1845586E00A19018 /* ISViewController.m */,
-				DDB505711845586E00A19018 /* Images.xcassets */,
 				DDB505601845586E00A19018 /* Supporting Files */,
 			);
 			path = "Infinity Scroll";
@@ -130,24 +91,6 @@
 				DDB505621845586E00A19018 /* InfoPlist.strings */,
 				DDB505651845586E00A19018 /* main.m */,
 				DDB505671845586E00A19018 /* Infinity Scroll-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		DDB5057E1845586E00A19018 /* Infinity ScrollTests */ = {
-			isa = PBXGroup;
-			children = (
-				DDB505841845586E00A19018 /* Infinity_ScrollTests.m */,
-				DDB5057F1845586E00A19018 /* Supporting Files */,
-			);
-			path = "Infinity ScrollTests";
-			sourceTree = "<group>";
-		};
-		DDB5057F1845586E00A19018 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DDB505801845586E00A19018 /* Infinity ScrollTests-Info.plist */,
-				DDB505811845586E00A19018 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -172,24 +115,6 @@
 			productReference = DDB505561845586E00A19018 /* Infinity Scroll.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DDB505761845586E00A19018 /* Infinity ScrollTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DDB5058B1845586E00A19018 /* Build configuration list for PBXNativeTarget "Infinity ScrollTests" */;
-			buildPhases = (
-				DDB505731845586E00A19018 /* Sources */,
-				DDB505741845586E00A19018 /* Frameworks */,
-				DDB505751845586E00A19018 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DDB5057D1845586E00A19018 /* PBXTargetDependency */,
-			);
-			name = "Infinity ScrollTests";
-			productName = "Infinity ScrollTests";
-			productReference = DDB505771845586E00A19018 /* Infinity ScrollTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,11 +124,6 @@
 				CLASSPREFIX = IS;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = MapBox;
-				TargetAttributes = {
-					DDB505761845586E00A19018 = {
-						TestTargetID = DDB505551845586E00A19018;
-					};
-				};
 			};
 			buildConfigurationList = DDB505511845586E00A19018 /* Build configuration list for PBXProject "Infinity Scroll" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -219,7 +139,6 @@
 			projectRoot = "";
 			targets = (
 				DDB505551845586E00A19018 /* Infinity Scroll */,
-				DDB505761845586E00A19018 /* Infinity ScrollTests */,
 			);
 		};
 /* End PBXProject section */
@@ -229,17 +148,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDB505721845586E00A19018 /* Images.xcassets in Resources */,
 				DDB505641845586E00A19018 /* InfoPlist.strings in Resources */,
-				DDB5056D1845586E00A19018 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DDB505751845586E00A19018 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDB505831845586E00A19018 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,45 +165,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DDB505731845586E00A19018 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DDB505851845586E00A19018 /* Infinity_ScrollTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DDB5057D1845586E00A19018 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DDB505551845586E00A19018 /* Infinity Scroll */;
-			targetProxy = DDB5057C1845586E00A19018 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DDB505621845586E00A19018 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DDB505631845586E00A19018 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		DDB5056B1845586E00A19018 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDB5056C1845586E00A19018 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		DDB505811845586E00A19018 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DDB505821845586E00A19018 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -402,48 +279,6 @@
 			};
 			name = Release;
 		};
-		DDB5058C1845586E00A19018 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Infinity Scroll.app/Infinity Scroll";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Infinity Scroll/Infinity Scroll-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Infinity ScrollTests/Infinity ScrollTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		DDB5058D1845586E00A19018 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Infinity Scroll.app/Infinity Scroll";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Infinity Scroll/Infinity Scroll-Prefix.pch";
-				INFOPLIST_FILE = "Infinity ScrollTests/Infinity ScrollTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -461,14 +296,6 @@
 			buildConfigurations = (
 				DDB505891845586E00A19018 /* Debug */,
 				DDB5058A1845586E00A19018 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		DDB5058B1845586E00A19018 /* Build configuration list for PBXNativeTarget "Infinity ScrollTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DDB5058C1845586E00A19018 /* Debug */,
-				DDB5058D1845586E00A19018 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
