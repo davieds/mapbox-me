@@ -66,7 +66,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 @interface ISWrapperView () <ISScrollViewDelegate, GLKViewDelegate>
 
 @property (nonatomic) ISScrollView *scrollView;
-@property (nonatomic) GLKView *contentView;
+@property (nonatomic) UIView *gestureView;
+@property (nonatomic) GLKView *renderView;
 @property (nonatomic) CGFloat worldZoom;
 @property (nonatomic) CGFloat worldDimension;
 @property (nonatomic) CGPoint worldOffset;
@@ -99,10 +100,15 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         _scrollView.delegate = self;
         [self addSubview:_scrollView];
 
-        _contentView = [[GLKView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
-        _contentView.delegate = self;
-        _contentView.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-        [_scrollView addSubview:_contentView];
+        _gestureView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
+        [_scrollView addSubview:_gestureView];
+
+        _renderView = [[GLKView alloc] initWithFrame:_scrollView.frame];
+        _renderView.delegate = self;
+        _renderView.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+        _renderView.userInteractionEnabled = NO;
+        _renderView.alpha = 0.5;
+        [self addSubview:_renderView];
 
         _worldZoom = log2f(self.bounds.size.width / 256);
         _worldDimension = self.bounds.size.width;
@@ -110,7 +116,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
         _lastContentOffset = _scrollView.contentOffset;
 
-        [EAGLContext setCurrentContext:_contentView.context];
+        [EAGLContext setCurrentContext:_renderView.context];
 
         _baseEffect = [GLKBaseEffect new];
         _baseEffect.useConstantColor = GL_TRUE;
@@ -122,6 +128,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         glBindBuffer(GL_ARRAY_BUFFER, _bufferName);
 
         _textures = [NSMutableDictionary dictionary];
+
+        [self updateTiles];
     }
 
     return self;
@@ -135,8 +143,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         _bufferName = 0;
     }
 
-    [EAGLContext setCurrentContext:_contentView.context];
-    _contentView.context = nil;
+    [EAGLContext setCurrentContext:_renderView.context];
+    _renderView.context = nil;
     [EAGLContext setCurrentContext:nil];
 }
 
@@ -182,7 +190,52 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
 - (void)render:(CADisplayLink *)displayLink
 {
-    [self.contentView display];
+    [self.renderView display];
+}
+
+- (void)updateTiles
+{
+    NSUInteger cols = self.renderView.bounds.size.width  / 256;
+    NSUInteger rows = self.renderView.bounds.size.height / 256;
+
+    for (NSUInteger c = 0; c < cols; c++)
+    {
+        for (NSUInteger r = 0; r < rows; r++)
+        {
+            ISTile tile = ISTileMake(self.worldZoom, c, (1 - r));
+
+            if ( ! [self.textures objectForKey:ISTileKey(tile)])
+            {
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+                {
+                    UIImage *tileImage = [ISTileSource imageForTile:tile];
+
+                    dispatch_async(dispatch_get_main_queue(), ^(void)
+                    {
+                        if (tileImage)
+                        {
+                            CFBridgingRetain((id)tileImage.CGImage);
+
+                            [[[GLKTextureLoader alloc] initWithSharegroup:self.renderView.context.sharegroup] textureWithCGImage:tileImage.CGImage
+                                                                                                                         options:@{ GLKTextureLoaderOriginBottomLeft : @YES }
+                                                                                                                           queue:nil
+                                                                                                               completionHandler:^(GLKTextureInfo *textureInfo, NSError *outError)
+                            {
+                                if (textureInfo)
+                                {
+                                    [self.textures setObject:textureInfo forKey:ISTileKey(tile)];
+
+                                    [self.renderView setNeedsDisplay];
+                                }
+
+                                CFBridgingRelease(tileImage.CGImage);
+                            }];
+                        }
+                    });
+               });
+            }
+        }
+    }
 }
 
 #pragma mark -
@@ -217,47 +270,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
     self.lastContentOffset = self.scrollView.contentOffset;
 
-    NSUInteger cols = self.contentView.bounds.size.width  / 256;
-    NSUInteger rows = self.contentView.bounds.size.height / 256;
-
-    for (NSUInteger c = 0; c < cols; c++)
-    {
-        for (NSUInteger r = 0; r < rows; r++)
-        {
-            ISTile tile = ISTileMake(self.worldZoom, c, (1 - r));
-
-            if ( ! [self.textures objectForKey:ISTileKey(tile)])
-            {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-                {
-                    UIImage *tileImage = [ISTileSource imageForTile:tile];
-
-                    dispatch_async(dispatch_get_main_queue(), ^(void)
-                    {
-                        if (tileImage)
-                        {
-                            CFBridgingRetain((id)tileImage.CGImage);
-
-                            [[[GLKTextureLoader alloc] initWithSharegroup:self.contentView.context.sharegroup] textureWithCGImage:tileImage.CGImage
-                                                                                                                          options:@{ GLKTextureLoaderOriginBottomLeft : @YES }
-                                                                                                                            queue:nil
-                                                                                                                completionHandler:^(GLKTextureInfo *textureInfo, NSError *outError)
-                                                                                                                {
-                                                                                                                    if (textureInfo)
-                                                                                                                    {
-                                                                                                                        [self.textures setObject:textureInfo forKey:ISTileKey(tile)];
-
-                                                                                                                        [self.contentView setNeedsDisplay];
-                                                                                                                    }
-
-                                                                                                                    CFBridgingRelease(tileImage.CGImage);
-                                                                                                                }];
-                        }
-                    });
-               });
-            }
-        }
-    }
+    [self updateTiles];
 }
 
 - (void)scrollViewWillRecenter:(UIScrollView *)scrollView
@@ -278,8 +291,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    NSUInteger cols = self.contentView.bounds.size.width  / 256;
-    NSUInteger rows = self.contentView.bounds.size.height / 256;
+    NSUInteger cols = self.renderView.bounds.size.width  / 256;
+    NSUInteger rows = self.renderView.bounds.size.height / 256;
 
     GLint tileIndex = 0;
 
