@@ -202,6 +202,12 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     NSUInteger cols = self.bounds.size.width  / 256;
     NSUInteger rows = self.bounds.size.height / 256;
 
+    if ((NSUInteger)self.worldOffset.x % 256)
+        cols++;
+
+    if ((NSUInteger)self.worldOffset.y % 256)
+        rows++;
+
     for (NSUInteger c = 0; c < cols; c++)
     {
         for (NSUInteger r = 0; r < rows; r++)
@@ -302,6 +308,38 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     NSUInteger cols = self.bounds.size.width  / 256;
     NSUInteger rows = self.bounds.size.height / 256;
 
+    CGSize tileSize = CGSizeMake(2.0 / (cols), 2.0 / rows);
+
+    CGFloat tx = 2.0 * ((self.worldOffset.x - (topLeftTile.x * 256)) / self.bounds.size.width);
+
+    if (tx > 0)
+        cols++;
+
+    CGFloat ty = 2.0 * ((self.worldOffset.y - (topLeftTile.y * 256)) / self.bounds.size.height);
+
+    if (ty > 0)
+        rows++;
+
+    SceneTriangle triangles[(cols * rows * 2)];
+
+    NSUInteger triangleIndex = 0;
+
+    for (NSUInteger c = 0; c < cols; c++)
+    {
+        for (NSUInteger r = 0; r < rows; r++)
+        {
+            SceneVertex tileVertexSW = {{((CGFloat)c * tileSize.width) - 1.0 - tx, ((CGFloat)r * tileSize.height) - 1.0 + ty, 0}, {0, 0}};
+            SceneVertex tileVertexSE = {{tileVertexSW.position.v[0] + tileSize.width, tileVertexSW.position.v[1], 0}, {1, 0}};
+            SceneVertex tileVertexNW = {{tileVertexSW.position.v[0], tileVertexSW.position.v[1] + tileSize.height, 0}, {0, 1}};
+            SceneVertex tileVertexNE = {{tileVertexSE.position.v[0], tileVertexNW.position.v[1], 0}, {1, 1}};
+
+            triangles[triangleIndex]       = SceneTriangleMake(tileVertexSE, tileVertexSW, tileVertexNW);
+            triangles[(triangleIndex + 1)] = SceneTriangleMake(tileVertexSE, tileVertexNW, tileVertexNE);
+
+            triangleIndex += 2;
+        }
+    }
+
     GLint tileIndex = 0;
 
     for (NSUInteger c = 0; c < cols; c++)
@@ -328,28 +366,6 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
             self.baseEffect.texture2d0.target = texture.target;
 
             [self.baseEffect prepareToDraw];
-
-            CGSize tileSize = CGSizeMake(2.0 / (cols), 2.0 / rows);
-
-            SceneTriangle triangles[(cols * rows * 2)];
-
-            NSUInteger triangleIndex = 0;
-
-            for (NSUInteger c = 0; c < cols; c++)
-            {
-                for (NSUInteger r = 0; r < rows; r++)
-                {
-                    SceneVertex tileVertexSW = {{((CGFloat)c * tileSize.width) - 1.0, ((CGFloat)r * tileSize.height) - 1.0, 0}, {0, 0}};
-                    SceneVertex tileVertexSE = {{tileVertexSW.position.v[0] + tileSize.width, tileVertexSW.position.v[1], 0}, {1, 0}};
-                    SceneVertex tileVertexNW = {{tileVertexSW.position.v[0], tileVertexSW.position.v[1] + tileSize.height, 0}, {0, 1}};
-                    SceneVertex tileVertexNE = {{tileVertexSE.position.v[0], tileVertexNW.position.v[1], 0}, {1, 1}};
-
-                    triangles[triangleIndex]       = SceneTriangleMake(tileVertexSE, tileVertexSW, tileVertexNW);
-                    triangles[(triangleIndex + 1)] = SceneTriangleMake(tileVertexSE, tileVertexNW, tileVertexNE);
-
-                    triangleIndex += 2;
-                }
-            }
 
             GLsizei    vertexCount     = sizeof(triangles) / sizeof(SceneVertex);
             GLsizeiptr stride          = sizeof(SceneVertex);
