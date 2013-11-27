@@ -107,11 +107,11 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         _renderView.delegate = self;
         _renderView.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
         _renderView.userInteractionEnabled = NO;
-        _renderView.alpha = 0.5;
+//        _renderView.alpha = 0.5;
         [self addSubview:_renderView];
 
-        _worldZoom = log2f(self.bounds.size.width / 256);
-        _worldDimension = self.bounds.size.width;
+        _worldZoom = 2;
+        _worldDimension = powf(2.0, _worldZoom) * 256;
         _worldOffset = CGPointMake(0, 0);
 
         _lastContentOffset = _scrollView.contentOffset;
@@ -152,20 +152,20 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
 - (CGPoint)clampedWorldOffset:(CGPoint)offset
 {
-    CGFloat maxDimension = powf(2.0, self.worldZoom) * 256;
+    CGSize maxOffset = CGSizeMake((self.worldDimension - self.bounds.size.width), (self.worldDimension - self.bounds.size.height));
 
     CGFloat newX = offset.x;
 
-    if (newX > maxDimension)
-        newX -= maxDimension;
+    if (newX > maxOffset.width)
+        newX = maxOffset.width; // -= maxOffset.width;
 
     if (newX < 0)
-        newX += maxDimension;
+        newX = 0; //+= maxOffset.width;
 
     CGFloat newY = offset.y;
 
-    if (newY > maxDimension)
-        newY = maxDimension;
+    if (newY > maxOffset.height)
+        newY = maxOffset.height;
 
     if (newY < 0)
         newY = 0;
@@ -195,14 +195,18 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
 - (void)updateTiles
 {
-    NSUInteger cols = self.renderView.bounds.size.width  / 256;
-    NSUInteger rows = self.renderView.bounds.size.height / 256;
+    NSUInteger tilesPerSide = powf(2.0, self.worldZoom);
+
+    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+
+    NSUInteger cols = self.bounds.size.width  / 256;
+    NSUInteger rows = self.bounds.size.height / 256;
 
     for (NSUInteger c = 0; c < cols; c++)
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, c, (1 - r));
+            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + (1 - r));
 
             if ( ! [self.textures objectForKey:ISTileKey(tile)])
             {
@@ -291,8 +295,12 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 {
     glClear(GL_COLOR_BUFFER_BIT);
 
-    NSUInteger cols = self.renderView.bounds.size.width  / 256;
-    NSUInteger rows = self.renderView.bounds.size.height / 256;
+    NSUInteger tilesPerSide = powf(2.0, self.worldZoom);
+
+    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+
+    NSUInteger cols = self.bounds.size.width  / 256;
+    NSUInteger rows = self.bounds.size.height / 256;
 
     GLint tileIndex = 0;
 
@@ -300,7 +308,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, c, (1 - r));
+            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + (1 - r));
 
             GLKTextureInfo *texture = [self.textures objectForKey:ISTileKey(tile)];
 
