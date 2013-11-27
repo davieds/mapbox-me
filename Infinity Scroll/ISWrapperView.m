@@ -77,6 +77,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 @property (nonatomic) GLuint bufferName;
 @property (nonatomic) GLKTextureInfo *blankTexture;
 @property (nonatomic) NSMutableDictionary *textures;
+@property (nonatomic) NSMutableArray *activeFetches;
 @property (nonatomic) CADisplayLink *displayLink;
 @property (nonatomic) CGFloat tiltDegrees;
 
@@ -141,6 +142,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         glBindBuffer(GL_ARRAY_BUFFER, _bufferName);
 
         _textures = [NSMutableDictionary dictionary];
+
+        _activeFetches = [NSMutableArray array];
 
         [self updateTiles];
     }
@@ -227,8 +230,10 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         {
             ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
 
-            if ( ! [self.textures objectForKey:ISTileKey(tile)])
+            if ( ! [self.textures objectForKey:ISTileKey(tile)] && ! [self.activeFetches containsObject:ISTileKey(tile)])
             {
+                [self.activeFetches addObject:ISTileKey(tile)];
+
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
                 {
                     UIImage *tileImage = [ISTileSource imageForTile:tile];
@@ -254,6 +259,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
                                 CFBridgingRelease(tileImage.CGImage);
                             }];
                         }
+
+                        [self.activeFetches removeObject:ISTileKey(tile)];
                     });
                });
             }
