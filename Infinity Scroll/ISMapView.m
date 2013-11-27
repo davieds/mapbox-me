@@ -1,12 +1,12 @@
 //
-//  ISWrapperView.m
+//  ISMapView.m
 //  Infinity Scroll
 //
 //  Created by Justin R. Miller on 11/26/13.
 //  Copyright (c) 2013 MapBox. All rights reserved.
 //
 
-#import "ISWrapperView.h"
+#import "ISMapView.h"
 
 #import "ISTileSource.h"
 
@@ -63,7 +63,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
 #pragma mark -
 
-@interface ISWrapperView () <ISScrollViewDelegate, GLKViewDelegate>
+@interface ISMapView () <ISScrollViewDelegate, GLKViewDelegate>
 
 @property (nonatomic) ISScrollView *scrollView;
 @property (nonatomic) UIView *gestureView;
@@ -87,7 +87,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
 #pragma mark -
 
-@implementation ISWrapperView
+@implementation ISMapView
 
 - (id)initWithFrame:(CGRect)frame
 {

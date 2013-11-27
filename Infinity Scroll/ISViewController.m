@@ -8,7 +8,7 @@
 
 #import "ISViewController.h"
 
-#import "ISWrapperView.h"
+#import "ISMapView.h"
 
 @implementation ISViewController
 
@@ -18,7 +18,7 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
 
-    [self.view addSubview:[[ISWrapperView alloc] initWithFrame:CGRectMake(128, 128, 512, 512)]];
+    [self.view addSubview:[[ISMapView alloc] initWithFrame:self.view.bounds]];
 }
 
 @end

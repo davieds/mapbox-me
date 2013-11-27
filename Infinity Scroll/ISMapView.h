@@ -1,5 +1,5 @@
 //
-//  ISWrapperView.h
+//  ISMapView.h
 //  Infinity Scroll
 //
 //  Created by Justin R. Miller on 11/26/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISWrapperView : UIView
+@interface ISMapView : UIView
 
 @end
