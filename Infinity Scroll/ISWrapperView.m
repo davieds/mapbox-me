@@ -290,7 +290,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
         [self updateTiles];
 
-        [self.renderView display];
+        [self.renderView setNeedsDisplay];
     }
 }
 
@@ -317,7 +317,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
         [self updateTiles];
 
-        [self.renderView display];
+        [self.renderView setNeedsDisplay];
     }
 }
 
@@ -337,7 +337,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     self.tiltDegrees = fmaxf(self.tiltDegrees, 0);
     self.tiltDegrees = fminf(self.tiltDegrees, 60);
 
-    [self.renderView display];
+    [self.renderView setNeedsDisplay];
 }
 
 - (void)rotate:(UIRotationGestureRecognizer *)recognizer
@@ -350,7 +350,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
     self.rotateDegrees = self.oldRotateDegrees - (recognizer.rotation / (M_PI / 180));
 
-    [self.renderView display];
+    [self.renderView setNeedsDisplay];
 }
 
 - (void)clearTextures
