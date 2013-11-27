@@ -211,7 +211,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + (1 - r));
+            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
 
             if ( ! [self.textures objectForKey:ISTileKey(tile)])
             {
@@ -307,7 +307,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     NSUInteger cols = self.bounds.size.width  / 256;
     NSUInteger rows = self.bounds.size.height / 256;
 
-    CGSize tileSize = CGSizeMake(2.0 / (cols), 2.0 / rows);
+    CGSize tileSize = CGSizeMake(2.0 / cols, 2.0 / rows);
 
     CGFloat tx = 2.0 * ((self.worldOffset.x - (topLeftTile.x * 256)) / self.bounds.size.width);
 
@@ -327,7 +327,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            SceneVertex tileVertexSW = {{((CGFloat)c * tileSize.width) - 1.0 - tx, ((CGFloat)r * tileSize.height) - 1.0 + ty, 0}, {0, 0}};
+            SceneVertex tileVertexSW = {{((CGFloat)c * tileSize.width) - 1.0 - tx, ((CGFloat)r * -tileSize.height) + ty, 0}, {0, 0}};
             SceneVertex tileVertexSE = {{tileVertexSW.position.v[0] + tileSize.width, tileVertexSW.position.v[1], 0}, {1, 0}};
             SceneVertex tileVertexNW = {{tileVertexSW.position.v[0], tileVertexSW.position.v[1] + tileSize.height, 0}, {0, 1}};
             SceneVertex tileVertexNE = {{tileVertexSE.position.v[0], tileVertexNW.position.v[1], 0}, {1, 1}};
@@ -345,7 +345,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + (1 - r));
+            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
 
             GLKTextureInfo *texture = [self.textures objectForKey:ISTileKey(tile)];
 
