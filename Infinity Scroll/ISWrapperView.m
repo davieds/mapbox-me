@@ -268,7 +268,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
 
-        [self.textures removeAllObjects];
+        [self clearTextures];
 
         [self updateTiles];
 
@@ -289,12 +289,23 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
 
-        [self.textures removeAllObjects];
+        [self clearTextures];
 
         [self updateTiles];
 
         [self.renderView display];
     }
+}
+
+- (void)clearTextures
+{
+    for (GLKTextureInfo *texture in [self.textures allValues])
+    {
+        GLuint name = texture.name;
+        glDeleteTextures(1, &name);
+    }
+
+    [self.textures removeAllObjects];
 }
 
 #pragma mark -
