@@ -18,7 +18,7 @@
 
     self.view.backgroundColor = [UIColor lightGrayColor];
 
-    [self.view addSubview:[[ISMapView alloc] initWithFrame:self.view.bounds]];
+    [self.view addSubview:[[ISMapView alloc] initWithFrame:CGRectMake(128, 128, 512, 512)]];
 }
 
 @end
