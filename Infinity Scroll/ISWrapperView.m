@@ -14,7 +14,8 @@
 
 @optional
 
-- (void)scrollView:(UIScrollView *)scrollView willRecenterWithDelta:(CGPoint)delta;
+- (void)scrollViewWillRecenter:(UIScrollView *)scrollView;
+- (void)scrollViewDidRecenter:(UIScrollView *)scrollView;
 
 @end
 
@@ -35,13 +36,13 @@
     if ((fabs(self.contentOffset.x - ((self.contentSize.width  - self.bounds.size.width)  / 2.0)) > self.contentSize.width  / 4.0) ||
         (fabs(self.contentOffset.y - ((self.contentSize.height - self.bounds.size.height) / 2.0)) > self.contentSize.height / 4.0))
     {
-        CGPoint oldOffset = self.contentOffset;
-        CGPoint newOffset = CGPointMake(self.bounds.size.width, self.bounds.size.height);
+        if ([self.delegate respondsToSelector:@selector(scrollViewWillRecenter:)])
+            [self.delegate scrollViewWillRecenter:self];
 
-        if ([self.delegate respondsToSelector:@selector(scrollView:willRecenterWithDelta:)])
-            [self.delegate scrollView:self willRecenterWithDelta:CGPointMake(oldOffset.x - newOffset.x, oldOffset.y - newOffset.y)];
+        self.contentOffset = CGPointMake(self.bounds.size.width, self.bounds.size.height);
 
-        self.contentOffset = newOffset;
+        if ([self.delegate respondsToSelector:@selector(scrollViewDidRecenter:)])
+            [self.delegate scrollViewDidRecenter:self];
     }
 }
 
@@ -57,6 +58,7 @@
 @property (nonatomic) CGFloat worldDimension;
 @property (nonatomic) CGPoint worldOffset;
 @property (nonatomic) CGPoint lastContentOffset;
+@property (nonatomic, getter=isRecentering) BOOL recentering;
 
 @end
 
@@ -72,7 +74,7 @@
     {
         _scrollView = [[ISScrollView alloc] initWithFrame:self.bounds];
         _scrollView.contentSize = CGSizeMake(self.bounds.size.width * 3, self.bounds.size.width * 3);
-        _scrollView.contentOffset = CGPointMake(0, 0);
+        _scrollView.contentOffset = CGPointMake(self.bounds.size.width, self.bounds.size.height);
         _scrollView.scrollEnabled = YES;
         _scrollView.bounces = NO;
         _scrollView.backgroundColor = [UIColor redColor];
@@ -84,7 +86,7 @@
         _contentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"tile.png"]];
         [_scrollView addSubview:_contentView];
 
-        _worldZoom = 0;
+        _worldZoom = log2f(self.bounds.size.width / 256);
         _worldDimension = self.bounds.size.width;
         _worldOffset = CGPointMake(0, 0);
 
@@ -98,15 +100,23 @@
 
 - (CGPoint)clampedWorldOffset:(CGPoint)offset
 {
-    CGFloat newX, newY;
-
     CGFloat maxDimension = powf(2.0, self.worldZoom) * 256;
 
-    newX = fminf(offset.x, maxDimension);
-    newX = fmaxf(newX, 0);
+    CGFloat newX = offset.x;
 
-    newY = fminf(offset.y, maxDimension);
-    newY = fmaxf(newY, 0);
+    if (newX > maxDimension)
+        newX -= maxDimension;
+
+    if (newX < 0)
+        newX += maxDimension;
+
+    CGFloat newY = offset.y;
+
+    if (newY > maxDimension)
+        newY = maxDimension;
+
+    if (newY < 0)
+        newY = 0;
 
     return CGPointMake(newX, newY);
 }
@@ -115,19 +125,29 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    if (self.isRecentering)
+        return;
+
     CGFloat dx = self.scrollView.contentOffset.x - self.lastContentOffset.x;
     CGFloat dy = self.scrollView.contentOffset.y - self.lastContentOffset.y;
 
-    self.worldOffset =  [self clampedWorldOffset:CGPointMake(self.worldOffset.x + dx, self.worldOffset.y + dy)];
+    self.worldOffset = [self clampedWorldOffset:CGPointMake(self.worldOffset.x + dx, self.worldOffset.y + dy)];
 
     NSLog(@"world offset: %@", [NSValue valueWithCGPoint:self.worldOffset]);
 
     self.lastContentOffset = self.scrollView.contentOffset;
 }
 
-- (void)scrollView:(UIScrollView *)scrollView willRecenterWithDelta:(CGPoint)delta
+- (void)scrollViewWillRecenter:(UIScrollView *)scrollView
 {
-    self.worldOffset = [self clampedWorldOffset:CGPointMake(self.worldOffset.x + delta.x, self.worldOffset.y + delta.y)];
+    self.recentering = YES;
+}
+
+- (void)scrollViewDidRecenter:(UIScrollView *)scrollView
+{
+    self.recentering = NO;
+
+    self.lastContentOffset = scrollView.contentOffset;
 }
 
 #pragma mark -
