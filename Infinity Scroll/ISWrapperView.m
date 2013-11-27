@@ -103,6 +103,14 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         _gestureView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.contentSize.width, _scrollView.contentSize.height)];
         [_scrollView addSubview:_gestureView];
 
+        UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomIn:)];
+        doubleTap.numberOfTapsRequired = 2;
+        [_gestureView addGestureRecognizer:doubleTap];
+
+        UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomOut:)];
+        twoFingerTap.numberOfTouchesRequired = 2;
+        [_gestureView addGestureRecognizer:twoFingerTap];
+
         _renderView = [[GLKView alloc] initWithFrame:_scrollView.frame];
         _renderView.delegate = self;
         _renderView.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
@@ -244,6 +252,44 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
                });
             }
         }
+    }
+}
+
+- (void)zoomIn:(UITapGestureRecognizer *)recognizer
+{
+    if (self.worldZoom - 1 <= 19)
+    {
+        CGPoint oldCenterFactor = CGPointMake((self.worldOffset.x + (self.bounds.size.width  / 2)) / self.worldDimension,
+                                              (self.worldOffset.y + (self.bounds.size.height / 2)) / self.worldDimension);
+
+        self.worldZoom++;
+        self.worldDimension = powf(2.0, self.worldZoom) * 256;
+
+        self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
+                                       (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
+
+        [self updateTiles];
+
+        [self.renderView display];
+    }
+}
+
+- (void)zoomOut:(UITapGestureRecognizer *)recognizer
+{
+    if (self.worldZoom - 1 >= 0 && self.bounds.size.width <= powf(2.0, self.worldZoom - 1) * 256 && self.bounds.size.height <= powf(2.0, self.worldZoom - 1) * 256)
+    {
+        CGPoint oldCenterFactor = CGPointMake((self.worldOffset.x + (self.bounds.size.width  / 2)) / self.worldDimension,
+                                              (self.worldOffset.y + (self.bounds.size.height / 2)) / self.worldDimension);
+
+        self.worldZoom--;
+        self.worldDimension = powf(2.0, self.worldZoom) * 256;
+
+        self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
+                                       (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
+
+        [self updateTiles];
+
+        [self.renderView display];
     }
 }
 
