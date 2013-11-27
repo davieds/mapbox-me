@@ -156,10 +156,10 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     CGFloat newX = offset.x;
 
     if (newX > maxOffset.width)
-        newX = maxOffset.width; // -= maxOffset.width;
+        newX = maxOffset.width;
 
     if (newX < 0)
-        newX = 0; //+= maxOffset.width;
+        newX = 0;
 
     CGFloat newY = offset.y;
 
