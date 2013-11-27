@@ -107,7 +107,6 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         _renderView.delegate = self;
         _renderView.context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
         _renderView.userInteractionEnabled = NO;
-//        _renderView.alpha = 0.5;
         [self addSubview:_renderView];
 
         _worldZoom = 2;
