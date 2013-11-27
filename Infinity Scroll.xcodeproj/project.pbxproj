@@ -18,6 +18,7 @@
 		DDB5059118455B2D00A19018 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5059018455B2D00A19018 /* GLKit.framework */; };
 		DDB5059318455B3100A19018 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5059218455B3100A19018 /* OpenGLES.framework */; };
 		DDB5059918455CE900A19018 /* ISWrapperView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5059818455CE900A19018 /* ISWrapperView.m */; };
+		DDB5059C18457ED800A19018 /* ISTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5059B18457ED800A19018 /* ISTileSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		DDB5059218455B3100A19018 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		DDB5059718455CE900A19018 /* ISWrapperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISWrapperView.h; sourceTree = "<group>"; };
 		DDB5059818455CE900A19018 /* ISWrapperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISWrapperView.m; sourceTree = "<group>"; };
+		DDB5059A18457ED800A19018 /* ISTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTileSource.h; sourceTree = "<group>"; };
+		DDB5059B18457ED800A19018 /* ISTileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTileSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				DDB5056F1845586E00A19018 /* ISViewController.m */,
 				DDB5059718455CE900A19018 /* ISWrapperView.h */,
 				DDB5059818455CE900A19018 /* ISWrapperView.m */,
+				DDB5059A18457ED800A19018 /* ISTileSource.h */,
+				DDB5059B18457ED800A19018 /* ISTileSource.m */,
 				DDB5058E18455A9900A19018 /* tile.png */,
 				DDB505601845586E00A19018 /* Supporting Files */,
 			);
@@ -180,6 +185,7 @@
 				DDB505661845586E00A19018 /* main.m in Sources */,
 				DDB505701845586E00A19018 /* ISViewController.m in Sources */,
 				DDB5059918455CE900A19018 /* ISWrapperView.m in Sources */,
+				DDB5059C18457ED800A19018 /* ISTileSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
