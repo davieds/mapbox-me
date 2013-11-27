@@ -80,6 +80,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 @property (nonatomic) NSMutableArray *activeFetches;
 @property (nonatomic) CADisplayLink *displayLink;
 @property (nonatomic) CGFloat tiltDegrees;
+@property (nonatomic) CGFloat oldRotateDegrees;
+@property (nonatomic) CGFloat rotateDegrees;
 
 @end
 
@@ -117,6 +119,9 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         tilt.minimumNumberOfTouches = 2;
         tilt.maximumNumberOfTouches = 2;
         [_gestureView addGestureRecognizer:tilt];
+
+        UIRotationGestureRecognizer *rotate = [[UIRotationGestureRecognizer alloc] initWithTarget:self action:@selector(rotate:)];
+        [_gestureView addGestureRecognizer:rotate];
 
         _renderView = [[GLKView alloc] initWithFrame:_scrollView.frame];
         _renderView.delegate = self;
@@ -303,7 +308,10 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
 
         if (self.worldZoom <= 5)
-            self.tiltDegrees = 0;
+        {
+            self.tiltDegrees   = 0;
+            self.rotateDegrees = 0;
+        }
 
         [self clearTextures];
 
@@ -328,6 +336,19 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
     self.tiltDegrees = fmaxf(self.tiltDegrees, 0);
     self.tiltDegrees = fminf(self.tiltDegrees, 60);
+
+    [self.renderView display];
+}
+
+- (void)rotate:(UIRotationGestureRecognizer *)recognizer
+{
+    if (self.worldZoom <= 5)
+        return;
+
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+        self.oldRotateDegrees = self.rotateDegrees;
+
+    self.rotateDegrees = self.oldRotateDegrees - (recognizer.rotation / (M_PI / 180));
 
     [self.renderView display];
 }
@@ -496,6 +517,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     }
 
     self.baseEffect.transform.projectionMatrix = GLKMatrix4MakeRotation(self.tiltDegrees * M_PI / 180, 1, 0, 0);
+    self.baseEffect.transform.projectionMatrix = GLKMatrix4Rotate(self.baseEffect.transform.projectionMatrix, self.rotateDegrees * M_PI / 180, 0, 0, 1);
 }
 
 #pragma mark -
