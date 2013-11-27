@@ -268,6 +268,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
 
+        [self.textures removeAllObjects];
+
         [self updateTiles];
 
         [self.renderView display];
@@ -286,6 +288,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
         self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
+
+        [self.textures removeAllObjects];
 
         [self updateTiles];
 
