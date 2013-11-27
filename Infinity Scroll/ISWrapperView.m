@@ -78,6 +78,7 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 @property (nonatomic) GLKTextureInfo *blankTexture;
 @property (nonatomic) NSMutableDictionary *textures;
 @property (nonatomic) CADisplayLink *displayLink;
+@property (nonatomic) CGFloat tiltDegrees;
 
 @end
 
@@ -110,6 +111,11 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         UITapGestureRecognizer *twoFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoomOut:)];
         twoFingerTap.numberOfTouchesRequired = 2;
         [_gestureView addGestureRecognizer:twoFingerTap];
+
+        UIPanGestureRecognizer *tilt = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(tilt:)];
+        tilt.minimumNumberOfTouches = 2;
+        tilt.maximumNumberOfTouches = 2;
+        [_gestureView addGestureRecognizer:tilt];
 
         _renderView = [[GLKView alloc] initWithFrame:_scrollView.frame];
         _renderView.delegate = self;
@@ -289,12 +295,34 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
         self.worldOffset = CGPointMake((oldCenterFactor.x * self.worldDimension) - (self.bounds.size.width  / 2),
                                        (oldCenterFactor.y * self.worldDimension) - (self.bounds.size.height / 2));
 
+        if (self.worldZoom <= 5)
+            self.tiltDegrees = 0;
+
         [self clearTextures];
 
         [self updateTiles];
 
         [self.renderView display];
     }
+}
+
+- (void)tilt:(UIPanGestureRecognizer *)recognizer
+{
+    if (self.worldZoom <= 5)
+        return;
+
+    CGFloat angle = [recognizer translationInView:recognizer.view.superview].y / (self.bounds.size.height / -4);
+
+    if (angle < 0)
+        self.tiltDegrees -= fabsf(angle);
+
+    if (angle > 0)
+        self.tiltDegrees += fabsf(angle);
+
+    self.tiltDegrees = fmaxf(self.tiltDegrees, 0);
+    self.tiltDegrees = fminf(self.tiltDegrees, 60);
+
+    [self.renderView display];
 }
 
 - (void)clearTextures
@@ -459,6 +487,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
             tileIndex++;
         }
     }
+
+    self.baseEffect.transform.projectionMatrix = GLKMatrix4MakeRotation(self.tiltDegrees * M_PI / 180, 1, 0, 0);
 }
 
 #pragma mark -
