@@ -8,9 +8,10 @@
 
 #import "ISMapView.h"
 
-#import "ISTileSource.h"
+//#import "ISTileSource.h"
 
 #import <GLKit/GLKit.h>
+#import <JavaScriptCore/JavaScriptCore.h>
 
 typedef struct {
     GLKVector3 position;
@@ -78,6 +79,9 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 @property (nonatomic) GLKTextureInfo *blankTexture;
 @property (nonatomic) NSMutableDictionary *textures;
 @property (nonatomic) NSMutableArray *activeFetches;
+@property (nonatomic) JSContext *mainJSContext;
+@property (nonatomic) NSMutableArray *pooledJSContexts;
+@property (nonatomic) NSString *tileSourceScript;
 @property (nonatomic) CADisplayLink *displayLink;
 @property (nonatomic) CGFloat tiltDegrees;
 @property (nonatomic) CGFloat oldRotateDegrees;
@@ -150,6 +154,35 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
         _activeFetches = [NSMutableArray array];
 
+        _mainJSContext = [JSContext new];
+
+        _pooledJSContexts = [NSMutableArray array];
+
+        _tileSourceScript = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ISTileSource" ofType:@"js"]
+                                                      encoding:NSUTF8StringEncoding
+                                                         error:nil];
+
+        for (NSUInteger i = 0; i < 4; i++)
+        {
+            [_pooledJSContexts addObject:[JSContext new]];
+            _pooledJSContexts[i][@"CocoaGet"] =  ^(NSString *URLString)
+            {
+                return [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URLString]]
+                                             returningResponse:nil
+                                                         error:nil];
+            };
+            [_pooledJSContexts[i] evaluateScript:_tileSourceScript];
+        }
+
+        _mainJSContext[@"CocoaGet"] = ^(NSString *URLString)
+        {
+            return [NSURLConnection sendSynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:URLString]]
+                                         returningResponse:nil
+                                                     error:nil];
+        };
+
+        [_mainJSContext evaluateScript:_tileSourceScript];
+
         [self updateTiles];
     }
 
@@ -218,7 +251,12 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 {
     NSUInteger tilesPerSide = powf(2.0, self.worldZoom);
 
-    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+//    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+    NSDictionary *topLeftTile = [[self.mainJSContext[@"tileMake"] callWithArguments:@[ @(self.worldZoom),
+                                                                                       @(floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide)),
+                                                                                       @(floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide)) ]] toDictionary];
+
+
 
     NSUInteger cols = self.bounds.size.width  / 256;
     NSUInteger rows = self.bounds.size.height / 256;
@@ -233,15 +271,50 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
+//            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
+            NSDictionary *tile = [[self.mainJSContext[@"tileMake"] callWithArguments:@[ @(self.worldZoom),
+                                                                                        @([topLeftTile[@"x"] integerValue] + c),
+                                                                                        @([topLeftTile[@"y"] integerValue] + r) ]] toDictionary];
 
-            if ( ! [self.textures objectForKey:ISTileKey(tile)] && ! [self.activeFetches containsObject:ISTileKey(tile)])
+//            if ( ! [self.textures objectForKey:ISTileKey(tile)] && ! [self.activeFetches containsObject:ISTileKey(tile)])
+            if ( ! [self.textures objectForKey:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]] &&
+                 ! [self.activeFetches containsObject:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]])
             {
-                [self.activeFetches addObject:ISTileKey(tile)];
+//                [self.activeFetches addObject:ISTileKey(tile)];
+                [self.activeFetches addObject:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]];
 
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
                 {
-                    UIImage *tileImage = [ISTileSource imageForTile:tile];
+//                    UIImage *tileImage = [ISTileSource imageForTile:tile];
+
+                    __block JSContext *context;
+
+                    dispatch_sync(dispatch_get_main_queue(), ^(void)
+                    {
+                        context = ([self.pooledJSContexts count] ? [self.pooledJSContexts lastObject] : [JSContext new]);
+                        if ([self.pooledJSContexts containsObject:context])
+                            [self.pooledJSContexts removeObject:context];
+                    });
+
+                    id result = [context[@"imageDataForTile"] callWithArguments:@[ tile ]];
+
+                    dispatch_sync(dispatch_get_main_queue(), ^(void)
+                    {
+                        [self.pooledJSContexts addObject:context];
+                        NSLog(@"%i contexts in pool", [self.pooledJSContexts count]);
+                    });
+
+//                    NSLog(@"tile: %@", result);
+
+//                    UIImage *tileImage = [UIImage imageWithContentsOfFile:@"/tmp/default.jpg"];
+
+                    UIImage *tileImage = [UIImage imageWithData:[result toObjectOfClass:[NSData class]]];
+
+
+
+
+
+
 
                     dispatch_async(dispatch_get_main_queue(), ^(void)
                     {
@@ -256,7 +329,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
                             {
                                 if (textureInfo)
                                 {
-                                    [self.textures setObject:textureInfo forKey:ISTileKey(tile)];
+//                                    [self.textures setObject:textureInfo forKey:ISTileKey(tile)];
+                                    [self.textures setObject:textureInfo forKey:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]];
 
                                     [self.renderView setNeedsDisplay];
                                 }
@@ -265,7 +339,8 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
                             }];
                         }
 
-                        [self.activeFetches removeObject:ISTileKey(tile)];
+//                        [self.activeFetches removeObject:ISTileKey(tile)];
+                        [self.activeFetches removeObject:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]];
                     });
                });
             }
@@ -419,19 +494,22 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
 
     NSUInteger tilesPerSide = powf(2.0, self.worldZoom);
 
-    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+//    ISTile topLeftTile = ISTileMake(self.worldZoom, floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide), floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide));
+    NSDictionary *topLeftTile = [[self.mainJSContext[@"tileMake"] callWithArguments:@[ @(self.worldZoom),
+                                                                                       @(floorf((self.worldOffset.x / self.worldDimension) * tilesPerSide)),
+                                                                                       @(floorf((self.worldOffset.y / self.worldDimension) * tilesPerSide)) ]] toDictionary];
 
     NSUInteger cols = self.bounds.size.width  / 256;
     NSUInteger rows = self.bounds.size.height / 256;
 
     CGSize tileSize = CGSizeMake(2.0 / cols, 2.0 / rows);
 
-    CGFloat tx = 2.0 * ((self.worldOffset.x - (topLeftTile.x * 256)) / self.bounds.size.width);
+    CGFloat tx = 2.0 * ((self.worldOffset.x - ([topLeftTile[@"x"] integerValue] * 256)) / self.bounds.size.width);
 
     if (tx > 0)
         cols++;
 
-    CGFloat ty = 2.0 * ((self.worldOffset.y - (topLeftTile.y * 256)) / self.bounds.size.height);
+    CGFloat ty = 2.0 * ((self.worldOffset.y - ([topLeftTile[@"y"] integerValue] * 256)) / self.bounds.size.height);
 
     if (ty > 0)
         rows++;
@@ -462,9 +540,13 @@ static SceneTriangle SceneTriangleMake(const SceneVertex vertexA, const SceneVer
     {
         for (NSUInteger r = 0; r < rows; r++)
         {
-            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
+//            ISTile tile = ISTileMake(self.worldZoom, topLeftTile.x + c, topLeftTile.y + r);
+            NSDictionary *tile = [[self.mainJSContext[@"tileMake"] callWithArguments:@[ @(self.worldZoom),
+                                                                                        @([topLeftTile[@"x"] integerValue] + c),
+                                                                                        @([topLeftTile[@"y"] integerValue] + r) ]] toDictionary];
 
-            GLKTextureInfo *texture = [self.textures objectForKey:ISTileKey(tile)];
+//            GLKTextureInfo *texture = [self.textures objectForKey:ISTileKey(tile)];
+            GLKTextureInfo *texture = [self.textures objectForKey:[[self.mainJSContext[@"tileKey"] callWithArguments:@[ tile ]] toString]];
 
             if ( ! texture)
             {

@@ -19,6 +19,8 @@
 		DDB5059318455B3100A19018 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB5059218455B3100A19018 /* OpenGLES.framework */; };
 		DDB5059918455CE900A19018 /* ISMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5059818455CE900A19018 /* ISMapView.m */; };
 		DDB5059C18457ED800A19018 /* ISTileSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5059B18457ED800A19018 /* ISTileSource.m */; };
+		DDDFDA97184DCDE4000502F9 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDFDA96184DCDE3000502F9 /* JavaScriptCore.framework */; };
+		DDDFDA98184DD0EC000502F9 /* ISTileSource.js in Resources */ = {isa = PBXBuildFile; fileRef = DDDFDA94184DB78D000502F9 /* ISTileSource.js */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		DDB5059818455CE900A19018 /* ISMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMapView.m; sourceTree = "<group>"; };
 		DDB5059A18457ED800A19018 /* ISTileSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTileSource.h; sourceTree = "<group>"; };
 		DDB5059B18457ED800A19018 /* ISTileSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTileSource.m; sourceTree = "<group>"; };
+		DDDFDA94184DB78D000502F9 /* ISTileSource.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ISTileSource.js; sourceTree = "<group>"; };
+		DDDFDA96184DCDE3000502F9 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 				DDB5055C1845586E00A19018 /* CoreGraphics.framework in Frameworks */,
 				DDB5055A1845586E00A19018 /* Foundation.framework in Frameworks */,
 				DDB5059118455B2D00A19018 /* GLKit.framework in Frameworks */,
+				DDDFDA97184DCDE4000502F9 /* JavaScriptCore.framework in Frameworks */,
 				DDB5059318455B3100A19018 /* OpenGLES.framework in Frameworks */,
 				DDB5055E1845586E00A19018 /* UIKit.framework in Frameworks */,
 			);
@@ -82,6 +87,7 @@
 				DDB5055B1845586E00A19018 /* CoreGraphics.framework */,
 				DDB505591845586E00A19018 /* Foundation.framework */,
 				DDB5059018455B2D00A19018 /* GLKit.framework */,
+				DDDFDA96184DCDE3000502F9 /* JavaScriptCore.framework */,
 				DDB5059218455B3100A19018 /* OpenGLES.framework */,
 				DDB5055D1845586E00A19018 /* UIKit.framework */,
 			);
@@ -99,6 +105,7 @@
 				DDB5059818455CE900A19018 /* ISMapView.m */,
 				DDB5059A18457ED800A19018 /* ISTileSource.h */,
 				DDB5059B18457ED800A19018 /* ISTileSource.m */,
+				DDDFDA94184DB78D000502F9 /* ISTileSource.js */,
 				DDB5058E18455A9900A19018 /* tile.png */,
 				DDB505601845586E00A19018 /* Supporting Files */,
 			);
@@ -171,6 +178,7 @@
 			files = (
 				DDB505641845586E00A19018 /* InfoPlist.strings in Resources */,
 				DDB5058F18455A9900A19018 /* tile.png in Resources */,
+				DDDFDA98184DD0EC000502F9 /* ISTileSource.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
