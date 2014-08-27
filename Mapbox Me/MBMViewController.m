@@ -42,6 +42,7 @@
     [[UISegmentedControl appearance] setTintColor:kTintColor];
     [[UIToolbar appearance] setTintColor:kTintColor];
 
+    [[RMConfiguration configuration] setAccessToken:@"pk.eyJ1IjoianVzdGluIiwiYSI6IlpDbUJLSUEifQ.4mG8vhelFMju6HpIY-Hi5A"];
 }
 
 - (void)viewDidAppear:(BOOL)animated
