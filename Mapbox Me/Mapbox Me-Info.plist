@@ -49,5 +49,7 @@
 			<true/>
 		</dict>
 	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The map will be centered on the user&apos;s location.</string>
 </dict>
 </plist>
