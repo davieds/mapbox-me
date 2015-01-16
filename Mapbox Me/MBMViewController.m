@@ -47,6 +47,8 @@
 {
     [super viewDidAppear:animated];
 
+    [[RMConfiguration configuration] setAccessToken:@"pk.eyJ1IjoianVzdGluIiwiYSI6IlpDbUJLSUEifQ.4mG8vhelFMju6HpIY-Hi5A"];
+
     self.mapView.tileSource = [[RMMapboxSource alloc] initWithMapID:kRegularSourceID];
 
     self.navigationItem.rightBarButtonItem = [[RMUserTrackingBarButtonItem alloc] initWithMapView:self.mapView];
